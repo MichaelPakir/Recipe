@@ -17,10 +17,12 @@
   justify-content: center;
   align-items: center;
   background-color: aquamarine;
+  border-radius: 30px;
 }
 
 .food__card {
   padding: 1rem;
+  height: 200px;
   background-color: azure;
   border-radius: 1rem;
   justify-content: center;
