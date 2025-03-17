@@ -1,0 +1,34 @@
+.food__container {
+  display: flex;
+  padding: 1rem;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.food_img__wrapper {
+  width: 60rem;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aquamarine;
+}
+
+.food__card {
+  padding: 1rem;
+  background-color: azure;
+  border-radius: 1rem;
+  justify-content: center;
+}
+
+.food__img {
+  cursor: pointer;
+  margin-bottom: 0.75rem;
+  width: 100%;
+  height: 100%;
+}
