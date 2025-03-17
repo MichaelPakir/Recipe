@@ -2,10 +2,12 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 
-const MainLayout = () => {
+const MainLayout = ({ navLinks }) => {
   return (
     <div className="main-container">
-      <Sidebar />
+      <aside className="sidebar">
+        <Sidebar navLinks={navLinks} />
+      </aside>
       <main className="main-content">
         <Outlet />
       </main>

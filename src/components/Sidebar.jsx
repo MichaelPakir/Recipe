@@ -1,16 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
-const Sidebar = () => {
-  const [navLinks] = useState([
-    { label: "Menu", path: "/menu" },
-    { label: "Edit", path: "/edit" },
-    { label: "Fav", path: "/fav" },
-    { label: "Add", path: "/add" },
-  ]);
-
+const Sidebar = ({ navLinks }) => {
   return (
-    <aside className="sidebar">
+    <>
       <nav className="sidebar__nav">
         <a href="/" className="sidebar__logo">
           LOGO
@@ -24,7 +17,7 @@ const Sidebar = () => {
           ))}
         </ul>
       </nav>
-    </aside>
+    </>
   );
 };
 
