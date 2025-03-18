@@ -34,10 +34,12 @@ const Cards = () => {
       <div className="food__container container flex">
         {foods.map((food) => (
           <div className="food_img__wrapper" key={food.id}>
-            <div className="food__card">
-              <img className="food__img" src={food.image} alt={food.title} />
-              <h3 className="food__title">{food.title}</h3>
-            </div>
+            <Link to={`/recipe/${food.id}`} className="food__link">
+              <div className="food__card">
+                <img className="food__img" src={food.image} alt={food.title} />
+                <h3 className="food__title">{food.title}</h3>
+              </div>
+            </Link>
           </div>
         ))}
       </div>
