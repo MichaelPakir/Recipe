@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Sidebar = ({ navLinks }) => {
   return (
     <>
-      <nav className="sidebar__nav">
+      <nav className={`sidebar__nav`}>
         <a href="/" className="sidebar__logo">
           LOGO
         </a>

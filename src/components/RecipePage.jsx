@@ -8,32 +8,44 @@ const RecipePage = () => {
     {
       id: 1,
       title: "Tomato Bomb",
-      description: "A delicious tomato-filled dish.",
+      category: "desserts",
       image: "/popular-1.png",
     },
     {
       id: 2,
       title: "Nagasaki Mushroom",
-      description: "Savory mushrooms from Nagasaki.",
+      category: "main-course",
       image: "/popular-2.png",
     },
     {
       id: 3,
       title: "Yamashita Pepperoni",
-      description: "Spicy and flavorful pepperoni.",
+      category: "appetizers",
       image: "/popular-3.png",
     },
     {
       id: 4,
       title: "Nazi Pizza",
-      description: "Nazilicious Pizza",
-      image: "/popular-1.png",
+      category: "vegetarian",
+      image: "/popular-2.png",
     },
     {
       id: 5,
-      title: "Nazi Pizza",
-      description: "Nazilicious Pizza",
-      image: "/popular-2.png",
+      title: "Pizza de Cartel",
+      category: "main-course",
+      image: "/pizza.png",
+    },
+    {
+      id: 6,
+      title: "Yamashita Pepperoni",
+      category: "beverages",
+      image: "/popular-1.png",
+    },
+    {
+      id: 6,
+      title: "Yamashita Pepperoni",
+      category: "appetizers",
+      image: "/popular-1.png",
     },
   ];
 
