@@ -7,7 +7,6 @@ import Edit from "./pages/Edit.jsx";
 import Fav from "./pages/Fav.jsx";
 import Add from "./pages/Add.jsx";
 import Cards from "./components/Cards.jsx";
-import RecipePage from "./components/RecipePage.jsx";
 
 const App = () => {
   const [navLinks] = useState([
@@ -28,7 +27,6 @@ const App = () => {
             <Route path="/fav" element={<Fav />} />
             <Route path="/add" element={<Add />} />
             <Route path="/" element={<Cards />} />
-            <Route path="/recipe/:id" element={<RecipePage />} />
           </Route>
         </Routes>
       </section>

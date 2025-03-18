@@ -11,19 +11,19 @@
 }
 
 .food_img__wrapper {
-  width: 20rem;
+  width: 15rem;
   height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: aquamarine;
+
   border-radius: 30px;
 }
 
 .food__card {
   padding: 1rem;
   height: 200px;
-  background-color: azure;
+  background-color: rgb(47, 47, 47);
   border-radius: 1rem;
   justify-content: center;
 }
