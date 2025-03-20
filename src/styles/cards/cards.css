@@ -15,18 +15,19 @@
 
 .food_img__wrapper {
   width: 15rem;
-  height: 200px;
+  height: 15rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 30px;
+  overflow: hidden;
+  margin: 0 auto;
 }
 
 .food__card {
   flex: 0 1 calc(25% - 16px);
   padding: 1rem;
-
-  height: auto;
+  width: 100%;
+  height: 250px;
   background-color: hsl(219, 32%, 12%);
   border-radius: 1rem;
   justify-self: center;
@@ -36,6 +37,7 @@
 .food__img {
   cursor: pointer;
   margin-bottom: 0.75rem;
+
   width: 100%;
   height: 150px;
   object-fit: cover;
@@ -58,4 +60,11 @@
 .food__title {
   font-size: 1rem;
   margin: 0.5rem 0 0;
+}
+
+.food__description {
+  font-size: 0.9rem;
+  color: hsl(0, 0%, 85%);
+  margin-top: 0.5rem;
+  line-height: 1.4;
 }

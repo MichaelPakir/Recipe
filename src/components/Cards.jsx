@@ -7,24 +7,29 @@ const Cards = () => {
   const [foods] = useState([
     {
       id: 1,
-      title: "Spaghetti and Meatballs",
+      title: "Sinigang",
+      description: "Sinigang is a sour soup native to the Philippines.",
       category: "main-course",
       image:
-        "https://cookingmatters.org/wp-content/uploads/2021/11/Cooking-Matters-Recipe-SpghttiMtballs.png",
+        "https://fiarecipes.com/wp-content/uploads/2024/12/sinigang-recipe%E2%80%8Bs.webp",
     },
     {
       id: 2,
-      title: "Fruit Smoothies",
+      title: "Filipino Macaroni Salad",
+      description:
+        "When we say macaroni salad, what’s the first thing that comes to your mind?",
       category: "beverages",
       image:
-        "https://cookingmatters.org/wp-content/uploads/2021/11/Cooking-Matters-Recipe-FruitSmoothie.png",
+        "https://yummykitchentv.com/wp-content/uploads/2022/04/chicken-macaroni-salad-recipe.jpg",
     },
     {
       id: 3,
-      title: "Spinach Salad with Eggs",
+      title: "Pancit",
       category: "vegetarian",
+      description:
+        "Pancit is a popular Filipino dish made from noodles, vegetables, and various proteins like chicken, pork, or shrimp.",
       image:
-        "https://cookingmatters.org/wp-content/uploads/2021/11/Cooking-Matters-Recipe-SpinachSalad.png",
+        "https://panlasangpinoy.com/wp-content/uploads/2024/11/Filipino-Pancit-Recipe-1024x681.jpg",
     },
     {
       id: 4,
@@ -127,6 +132,7 @@ const Cards = () => {
                     alt={food.title}
                   />
                   <h3 className="food__title">{food.title}</h3>
+                  <p className="food__description">{food.description}</p>
                 </div>
               </Link>
             </div>
