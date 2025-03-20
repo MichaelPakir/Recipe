@@ -1,53 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 const RecipePage = () => {
   const { id } = useParams();
-
-  const foods = [
+  const [foods] = useState([
     {
       id: 1,
-      title: "Tomato Bomb",
-      category: "desserts",
-      image: "/popular-1.png",
+      title: "Spaghetti and Meatballs",
+      category: "main-course",
+      image:
+        "https://cookingmatters.org/wp-content/uploads/2021/11/Cooking-Matters-Recipe-SpghttiMtballs.png",
     },
     {
       id: 2,
-      title: "Nagasaki Mushroom",
-      category: "main-course",
-      image: "/popular-2.png",
+      title: "Fruit Smoothies",
+      category: "beverages",
+      image:
+        "https://cookingmatters.org/wp-content/uploads/2021/11/Cooking-Matters-Recipe-FruitSmoothie.png",
     },
     {
       id: 3,
-      title: "Yamashita Pepperoni",
-      category: "appetizers",
-      image: "/popular-3.png",
+      title: "Spinach Salad with Eggs",
+      category: "vegetarian",
+      image:
+        "https://cookingmatters.org/wp-content/uploads/2021/11/Cooking-Matters-Recipe-SpinachSalad.png",
     },
     {
       id: 4,
-      title: "Nazi Pizza",
-      category: "vegetarian",
-      image: "/popular-2.png",
+      title: "Squash and Orzo",
+      category: "appetizers",
+      image:
+        "https://cookingmatters.org/wp-content/uploads/2021/11/Cooking-Matters-Recipe-SquashOrzo.png",
     },
     {
       id: 5,
-      title: "Pizza de Cartel",
-      category: "main-course",
-      image: "/pizza.png",
+      title: "Italian Stuffed Peppers",
+      category: "desserts",
+      image:
+        "https://cookingmatters.org/wp-content/uploads/2021/11/Cooking-Matters-Recipe-StffPeppers.png",
     },
     {
       id: 6,
-      title: "Yamashita Pepperoni",
-      category: "beverages",
-      image: "/popular-1.png",
-    },
-    {
-      id: 6,
-      title: "Yamashita Pepperoni",
+      title: "Tabbouleh",
       category: "appetizers",
-      image: "/popular-1.png",
+      image:
+        "https://cookingmatters.org/wp-content/uploads/2021/11/Cooking-Matters-Recipe-Tabbouleh.png",
     },
-  ];
+    {
+      id: 7,
+      title: "Herb Roasted Chicken with Vegetables",
+      category: "main-course",
+      image:
+        "https://cookingmatters.org/wp-content/uploads/2021/11/Cooking-Matters-Recipe-HerbRstdChic.png",
+    },
+  ]);
 
   const food = foods.find((item) => item.id === parseInt(id));
 
