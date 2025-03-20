@@ -26,12 +26,6 @@
   transition: 0.4s;
 }
 
-.nav__logo-img {
-  height: 3.5rem;
-  width: auto;
-  filter: sepia(100%) saturate(100%) hue-rotate(60deg) brightness(350%);
-}
-
 .sidebar__logo-icon {
   margin-right: 1.2rem;
   width: auto;
@@ -50,7 +44,12 @@
 }
 
 .nav__link:hover {
-  background-color: #f5a623;
+  background-color: #2befc5;
+  color: #12192c;
+}
+
+.nav__link.active__work {
+  background-color: #2befc5;
   color: #12192c;
 }
 

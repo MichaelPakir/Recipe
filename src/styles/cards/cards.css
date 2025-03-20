@@ -53,8 +53,8 @@
 }
 
 .food__item.active__work {
-  background-color: hsl(250, 66%, 75%);
-  color: #fff;
+  background-color: #2befc5;
+  color: #12192c;
 }
 
 .food__title {
