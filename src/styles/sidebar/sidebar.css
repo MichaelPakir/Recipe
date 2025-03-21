@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 200px;
+  width: 150px;
   height: 100vh;
   background-color: #12192c;
   padding: 1.25rem 0.5rem 2rem;
@@ -21,6 +21,7 @@
 .sidebar__logo {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-bottom: 2rem;
   font-weight: 500;
   transition: 0.4s;

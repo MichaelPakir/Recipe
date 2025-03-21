@@ -19,7 +19,6 @@ const Sidebar = ({ navLinks }) => {
               alt="Recipe Logo"
               className="sidebar__logo-icon"
             />
-            <span className="nav__logo-text">RECIPE</span>
           </a>
 
           <div className="nav__container">
