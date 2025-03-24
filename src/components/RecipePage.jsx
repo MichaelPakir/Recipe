@@ -12,7 +12,7 @@ const RecipePage = ({ foods }) => {
 
   return (
     <section className="recipe__container">
-      <Link to={"/menu"} className="recipe__btn">
+      <Link to={"/"} className="recipe__btn">
         Go Back
       </Link>
       <img src={food.image} alt={food.title} className="recipe__image" />
