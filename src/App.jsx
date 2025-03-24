@@ -79,7 +79,7 @@ const App = () => {
       <section>
         <Routes>
           <Route element={<MainLayout navLinks={navLinks} />}>
-            <Route index element={<Menu />} />
+            <Route index element={<Menu foods={foods} />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/edit" element={<Edit />} />
             <Route path="/fav" element={<Fav />} />
