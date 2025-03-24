@@ -1,45 +1,88 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Cards = () => {
-  const [foods] = useState([
-    {
-      id: 1,
-      title: "Tomato Bomb",
-      image: "/popular-1.png",
-    },
-    {
-      id: 2,
-      title: "Nagasaki Mushroom",
-      image: "/popular-2.png",
-    },
-    {
-      id: 3,
-      title: "Yamashita Pepperoni",
-      image: "/popular-3.png",
-    },
-    {
-      id: 4,
-      title: "Nazi Pizza",
-      image: "/popular-1.png",
-    },
-    {
-      id: 5,
-      title: "Nazi Pizza",
-      image: "/popular-2.png",
-    },
-  ]);
+const Cards = ({ foods }) => {
+  const [filter, setFilter] = useState("all");
+
+  const handleFilterChange = (category) => {
+    setFilter(category);
+  };
+
+  const filteredFoods = foods.filter(
+    (food) => filter === "all" || food.category === filter
+  );
+
   return (
     <section>
-      <div className="food__container container flex">
-        {foods.map((food) => (
-          <div className="food_img__wrapper" key={food.id}>
-            <div className="food__card">
-              <img className="food__img" src={food.image} alt={food.title} />
-              <h3 className="food__title">{food.title}</h3>
+      <div className="">
+        <span
+          className={`food__item ${filter === "all" ? "active__work" : ""}`}
+          onClick={() => handleFilterChange("all")}
+        >
+          All
+        </span>
+        <span
+          className={`food__item ${
+            filter === "desserts" ? "active__work" : ""
+          }`}
+          onClick={() => handleFilterChange("desserts")}
+        >
+          Desserts
+        </span>
+        <span
+          className={`food__item ${
+            filter === "main-course" ? "active__work" : ""
+          }`}
+          onClick={() => handleFilterChange("main-course")}
+        >
+          Main Course
+        </span>
+        <span
+          className={`food__item ${
+            filter === "appetizers" ? "active__work" : ""
+          }`}
+          onClick={() => handleFilterChange("appetizers")}
+        >
+          Appetizers
+        </span>
+        <span
+          className={`food__item ${
+            filter === "beverages" ? "active__work" : ""
+          }`}
+          onClick={() => handleFilterChange("beverages")}
+        >
+          Beverages
+        </span>
+        <span
+          className={`food__item ${
+            filter === "vegetarian" ? "active__work" : ""
+          }`}
+          onClick={() => handleFilterChange("vegetarian")}
+        >
+          Vegetarian
+        </span>
+      </div>
+
+      <div className="food__container container">
+        <div className="flex wrap">
+          {filteredFoods.map((food) => (
+            <div key={food.id} className={`food__card mix${food.category}`}>
+              <div className="food_img__wrapper">
+                <Link to={`/recipe/${food.id}`} className="food__link">
+                  <div className="food__card">
+                    <img
+                      className="food__img"
+                      src={food.image}
+                      alt={food.title}
+                    />
+                    <h3 className="food__title">{food.title}</h3>
+                    <p className="food__description">{food.description}</p>
+                  </div>
+                </Link>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
