@@ -11,7 +11,7 @@ import RecipePage from "./components/RecipePage.jsx";
 
 const App = () => {
   const [navLinks] = useState([
-    { label: "Menu", path: "/menu" },
+    { label: "Menu", path: "/" },
     { label: "Edit", path: "/edit" },
     { label: "Favorites", path: "/fav" },
     { label: "Add", path: "/add" },
@@ -80,7 +80,7 @@ const App = () => {
         <Routes>
           <Route element={<MainLayout navLinks={navLinks} />}>
             <Route index element={<Menu foods={foods} />} />
-            <Route path="/menu" element={<Menu />} />
+            <Route path="/" element={<Menu />} />
             <Route path="/edit" element={<Edit />} />
             <Route path="/fav" element={<Fav />} />
             <Route path="/add" element={<Add />} />
