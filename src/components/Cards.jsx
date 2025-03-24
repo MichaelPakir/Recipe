@@ -63,24 +63,26 @@ const Cards = ({ foods }) => {
         </span>
       </div>
 
-      <div className="food__container container flex">
-        {filteredFoods.map((food) => (
-          <div key={food.id} className={`food__card mix${food.category}`}>
-            <div className="food_img__wrapper">
-              <Link to={`/recipe/${food.id}`} className="food__link">
-                <div className="food__card">
-                  <img
-                    className="food__img"
-                    src={food.image}
-                    alt={food.title}
-                  />
-                  <h3 className="food__title">{food.title}</h3>
-                  <p className="food__description">{food.description}</p>
-                </div>
-              </Link>
+      <div className="food__container container">
+        <div className="flex wrap">
+          {filteredFoods.map((food) => (
+            <div key={food.id} className={`food__card mix${food.category}`}>
+              <div className="food_img__wrapper">
+                <Link to={`/recipe/${food.id}`} className="food__link">
+                  <div className="food__card">
+                    <img
+                      className="food__img"
+                      src={food.image}
+                      alt={food.title}
+                    />
+                    <h3 className="food__title">{food.title}</h3>
+                    <p className="food__description">{food.description}</p>
+                  </div>
+                </Link>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

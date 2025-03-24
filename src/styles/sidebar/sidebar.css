@@ -66,12 +66,3 @@
 .show {
   width: var(--sidebar-collapsed-width, 168px);
 }
-
-@media (max-width: 768px) {
-  .sidebar {
-    width: 150px;
-  }
-  .nav__text {
-    font-size: 0.875rem;
-  }
-}
