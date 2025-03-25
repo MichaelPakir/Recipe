@@ -25,7 +25,7 @@ const App = () => {
         "Simple beef, vegetable, tamarind based soup that we eat over rice! A meal in itself!",
       category: "main-course",
       image:
-        "https://fiarecipes.com/wp-content/uploads/2024/12/sinigang-recipe%E2%80%8Bs.webp",
+        "https://www.maggi.ph/sites/default/files/styles/image_744_x_419/public/srh_recipes/442ce059c4c490e1ab61cdaef9c98511.jpg?h=28121b77&itok=Orr40I8J",
       ingredients: [
         {
           id: 1,

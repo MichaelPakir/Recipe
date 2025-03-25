@@ -15,12 +15,22 @@ const RecipePage = ({ foods }) => {
       <Link to={"/"} className="recipe__btn">
         Go Back
       </Link>
-      <img src={food.image} alt={food.title} className="recipe__image" />
       <h1 className="recipe__title">{food.title}</h1>
+      <img src={food.image} alt={food.title} className="recipe__image" />
       <p className="recipe__description">{food.description}</p>
 
       <h2>Ingredients:</h2>
-      <p></p>
+      {food.ingredients.map((ingredient) => (
+        <p key={ingredient.id}>{ingredient.name}</p>
+      ))}
+
+      <h2>Directions:</h2>
+      {food.directions.map((direction) => (
+        <div key={direction.id}>
+          <h4>{direction.title}</h4>
+          <p>{direction.name}</p>
+        </div>
+      ))}
     </section>
   );
 };
