@@ -18,14 +18,22 @@ const RecipePage = ({ foods }) => {
       <div className="recipe__info">
         <h2>Ingredients:</h2>
         {food.ingredients.map((ingredient) => (
-          <p key={ingredient.id}>{ingredient.name}</p>
+          <ul>
+            <li>
+              <p key={ingredient.id}>{ingredient.name}</p>
+            </li>
+          </ul>
         ))}
 
         <h2>Directions:</h2>
         {food.directions.map((direction) => (
           <div key={direction.id}>
-            <h4>{direction.title}</h4>
-            <p>{direction.name}</p>
+            <h4 className="recipe__step">{direction.title}</h4>
+            <ul>
+              <li>
+                <p>{direction.name}</p>
+              </li>
+            </ul>
           </div>
         ))}
       </div>
