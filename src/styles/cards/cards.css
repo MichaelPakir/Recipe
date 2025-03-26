@@ -108,13 +108,3 @@
   flex: 1;
   padding-left: 150px;
 }
-
-.recipe__info {
-  text-align: left;
-}
-
-.recipe__step {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
