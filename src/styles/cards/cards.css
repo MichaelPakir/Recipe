@@ -98,13 +98,18 @@
 }
 
 .recipe__image {
-  border-radius: 70px;
+  border-radius: 100px;
   width: 60rem;
-  padding: 2.5rem;
-  height: 65vh;
+  height: 30rem;
+  padding: 5rem;
+  padding-top: 5rem;
+  padding-left: 5rem;
 }
 
 .recipe__wrap {
-  flex: 1;
-  padding-left: 150px;
+  padding-right: 300px;
+}
+
+.recipe__info {
+  text-align: left;
 }
