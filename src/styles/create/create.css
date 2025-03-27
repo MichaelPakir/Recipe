@@ -1,0 +1,20 @@
+.recipe__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.form__container {
+  border: 1px solid #268d73;
+  height: 25rem;
+  padding: 5rem;
+  padding-left: 5rem;
+  width: 60rem;
+  border-radius: 30px;
+}
+
+.recipe__save {
+  display: flex;
+  justify-content: center;
+}
