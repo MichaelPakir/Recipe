@@ -56,6 +56,11 @@ const Add = () => {
     });
   };
 
+  const handleAddIngredientClick = (e) => {
+    e.preventDefault();
+    console.log("Testing Ingredient Click:");
+  };
+
   return (
     <div className="recipe__bg">
       {JSON.stringify(recipe)}
@@ -103,7 +108,7 @@ const Add = () => {
                 onChange={handleReciIngChange}
               />
             </div>
-            <button>Add Ingredient</button>
+            <button onClick={handleAddIngredientClick}>Add Ingredient</button>
           </div>
 
           <div>

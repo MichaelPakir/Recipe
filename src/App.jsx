@@ -86,7 +86,7 @@ const App = () => {
       title: "Classic Macaroni Salad",
       description:
         "This creamy macaroni salad always gets lots of compliments. It's an easy recipe to make with macaroni pasta, celery, onion, bell pepper, carrot, and pimentos and has a pleasing tangy dressing that everyone seems to love!",
-      category: "beverages",
+      category: "appetizers",
       image:
         "https://yummykitchentv.com/wp-content/uploads/2022/04/chicken-macaroni-salad-recipe.jpg",
       ingredients: [
