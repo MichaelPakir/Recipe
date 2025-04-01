@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 import "../styles/create/create.css";
+import TextField from "@mui/material/TextField";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import { Box } from "@mui/material";
 
 const Add = () => {
   const [recipe, setRecipe] = useState({
@@ -19,6 +25,16 @@ const Add = () => {
       },
     ],
   });
+
+  const [ingredients, setIngredients] = useState({
+    name: "",
+  });
+
+  const handleAddIngredientsChange = (e) => {
+    setIngredients((prevState) => {
+      return { ...prevState, name: e.target.value };
+    });
+  };
 
   const handleRecipeNameChange = (e) => {
     setRecipe((prevState) => {
@@ -44,12 +60,6 @@ const Add = () => {
     });
   };
 
-  const handleReciIngChange = (e) => {
-    setRecipe((prevState) => {
-      return { ...prevState, ingredients: e.target.value };
-    });
-  };
-
   const handleReciStepChange = (e) => {
     setRecipe((prevState) => {
       return { ...prevState, directions: e.target.value };
@@ -58,80 +68,84 @@ const Add = () => {
 
   const handleAddIngredientClick = (e) => {
     e.preventDefault();
-    console.log("Testing Ingredient Click:");
+    setIngredients((prevState) => {
+      return { ...prevState, name: "" };
+    });
   };
 
   return (
-    <div className="recipe__bg">
-      {JSON.stringify(recipe)}
-      <h1>What's Cooking in Your Mind?</h1>
-      <h3>Add a new recipe to your collection!</h3>
+    <Box>
+      <div className="recipe__bg">
+        {JSON.stringify(recipe)} <br />
+        {JSON.stringify(ingredients)}
+        <h1>What's Cooking in Your Mind?</h1>
+        <h3>Add a new recipe to your collection!</h3>
+        <div className="form__container">
+          <TextField
+            id="outlined-basic"
+            label="Recipe Name"
+            variant="outlined"
+            onChange={handleRecipeNameChange}
+          />
+          <FormControl className="recipe__form">
+            <InputLabel id="demo-simple-select-label">Age</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={""}
+              label="Age"
+              onChange={handleReciCatChange}
+            >
+              <MenuItem value={10}>Ten</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem>
+            </Select>
 
-      <div className="form__container">
-        <form className="recipe__form">
-          <label>
-            Recipe Name:
-            <input
-              type="text"
-              name="recipe name"
-              onChange={handleRecipeNameChange}
-            />
-          </label>
+            <label>
+              Recipe Description:
+              <textarea onChange={handleReciDescChange} />
+            </label>
 
-          <label>
-            Select Category:
-            <select onChange={handleReciCatChange}>
-              <option>Desserts</option>
-              <option>Main Course</option>
-              <option>Appetizers</option>
-              <option>Beverages</option>
-              <option>Vegetarian</option>
-            </select>
-          </label>
+            <label>
+              Image URL:
+              <input type="text" onChange={handleReciUrlChange} />
+            </label>
 
-          <label>
-            Recipe Description:
-            <textarea onChange={handleReciDescChange} />
-          </label>
-
-          <label>
-            Image URL:
-            <input type="text" onChange={handleReciUrlChange} />
-          </label>
-
-          <div>
-            <h4>Ingredients</h4>
             <div>
-              <input
-                type="text"
-                placeholder="Ingredient 1"
-                onChange={handleReciIngChange}
-              />
-            </div>
-            <button onClick={handleAddIngredientClick}>Add Ingredient</button>
-          </div>
-
-          <div>
-            <h4>Directions</h4>
-            <div>
-              <label>
+              <h4>Ingredients</h4>
+              <div>
                 <input
                   type="text"
-                  placeholder="Step 1"
-                  onChange={handleReciStepChange}
+                  placeholder="Ingredient 1"
+                  value={ingredients.name}
+                  onChange={handleAddIngredientsChange}
                 />
-                <input type="text" placeholder="Instruction" />
-              </label>
+              </div>
+              <button onClick={handleAddIngredientClick}>Add Ingredient</button>
             </div>
-            <button>Add Instruction</button>
-          </div>
 
-          <div className="recipe__save">
-            <button>Save</button>
-          </div>
-        </form>
+            <div>
+              <h4>Directions</h4>
+              <div>
+                <label>
+                  <input
+                    type="text"
+                    placeholder="Step 1"
+                    onChange={handleReciStepChange}
+                  />
+                  <input type="text" placeholder="Instruction" />
+                </label>
+              </div>
+              <button>Add Instruction</button>
+            </div>
+
+            <div className="recipe__save">
+              <button>Save</button>
+            </div>
+          </FormControl>
+        </div>
       </div>
-    </div>
+    </Box>
   );
 };
 
