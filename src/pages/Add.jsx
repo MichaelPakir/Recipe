@@ -6,7 +6,6 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Box } from "@mui/material";
-import "../styles/add/add.css";
 
 const Add = ({ fieldStyle }) => {
   const [idCounter, setIdCounter] = useState(1);
@@ -15,34 +14,12 @@ const Add = ({ fieldStyle }) => {
     category: "",
     description: "",
     image: "",
-    ingredients: [
-      {
-        name: "",
-      },
-    ],
-    instructions: [
-      {
-        name: "",
-      },
-    ],
+    ingredients: [],
+    instructions: [],
   });
 
-  const [ingredients, setIngredients] = useState({
-    name: "",
-  });
-
-  const handleAddIngredientsChange = (e) => {
-    const newIngredientName = e.target.value;
-
-    setIngredients({ name: newIngredientName });
-
-    setRecipe((prevState) => ({
-      ...prevState,
-      ingredients: prevState.ingredients.map((ingredient, index) =>
-        index === 0 ? { ...ingredient, name: newIngredientName } : ingredient
-      ),
-    }));
-  };
+  const [ingredients, setIngredients] = useState({});
+  const [instructions, setInstructions] = useState({});
 
   const handleRecipeNameChange = (e) => {
     setRecipe((prevState) => {
@@ -68,14 +45,15 @@ const Add = ({ fieldStyle }) => {
     });
   };
 
-  const handleReciGuideChange = (e) => {
-    setRecipe((prevState) => {
-      return { ...prevState, directions: e.target.value };
-    });
+  const handleAddIngredientsChange = (e) => {
+    const newIngredientName = e.target.value;
+
+    setIngredients({ name: newIngredientName });
   };
 
   const handleAddIngredientClick = (e) => {
     e.preventDefault();
+    setIdCounter((prev) => prev + 1);
 
     setRecipe((prevState) => ({
       ...prevState,
@@ -89,8 +67,28 @@ const Add = ({ fieldStyle }) => {
     }));
 
     setIngredients({ name: "" });
+  };
 
+  const handleReciGuideChange = (e) => {
+    const newInstructionName = e.target.value;
+
+    setInstructions({ name: newInstructionName });
+  };
+
+  const handleAddInstructionClick = (e) => {
+    e.preventDefault();
     setIdCounter((prev) => prev + 1);
+
+    setRecipe((prevState) => ({
+      ...prevState,
+      instructions: [
+        ...prevState.ingredients,
+        {
+          id: idCounter,
+          name: instructions.name,
+        },
+      ],
+    }));
   };
 
   return (
@@ -169,7 +167,9 @@ const Add = ({ fieldStyle }) => {
                 onChange={handleReciGuideChange}
               />
 
-              <button>Add Instruction</button>
+              <button onClick={handleAddInstructionClick}>
+                Add Instruction
+              </button>
             </div>
 
             <div className="recipe__save">
