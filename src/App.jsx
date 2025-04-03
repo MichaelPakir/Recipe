@@ -9,6 +9,20 @@ import Add from "./pages/Add.jsx";
 import Cards from "./components/Cards.jsx";
 import RecipePage from "./components/RecipePage.jsx";
 
+const fieldStyle = {
+  ".MuiInputLabel-root": {
+    color: "white",
+  },
+  ".MuiOutlinedInput-root": {
+    input: {
+      color: "white",
+    },
+  },
+  fieldset: {
+    border: "1px solid #2befc5",
+  },
+};
+
 const App = () => {
   const [navLinks] = useState([
     { label: "Menu", path: "/" },
@@ -590,7 +604,7 @@ const App = () => {
             <Route path="/" element={<Menu />} />
             <Route path="/edit" element={<Edit />} />
             <Route path="/fav" element={<Fav />} />
-            <Route path="/add" element={<Add />} />
+            <Route path="/add" element={<Add fieldStyle={fieldStyle} />} />
             <Route path="/:filter" element={<Cards />} />
             <Route path="/recipe/:id" element={<RecipePage foods={foods} />} />
           </Route>

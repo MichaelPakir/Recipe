@@ -6,8 +6,10 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Box } from "@mui/material";
+import "../styles/add/add.css";
 
-const Add = () => {
+const Add = ({ fieldStyle }) => {
+  const [idCounter, setIdCounter] = useState(1);
   const [recipe, setRecipe] = useState({
     title: "",
     category: "",
@@ -20,7 +22,6 @@ const Add = () => {
     ],
     instructions: [
       {
-        title: "",
         name: "",
       },
     ],
@@ -31,14 +32,21 @@ const Add = () => {
   });
 
   const handleAddIngredientsChange = (e) => {
-    setIngredients((prevState) => {
-      return { ...prevState, name: e.target.value };
-    });
+    const newIngredientName = e.target.value;
+
+    setIngredients({ name: newIngredientName });
+
+    setRecipe((prevState) => ({
+      ...prevState,
+      ingredients: prevState.ingredients.map((ingredient, index) =>
+        index === 0 ? { ...ingredient, name: newIngredientName } : ingredient
+      ),
+    }));
   };
 
   const handleRecipeNameChange = (e) => {
     setRecipe((prevState) => {
-      return { ...prevState, title: e.target.value }; // Purposes
+      return { ...prevState, title: e.target.value };
     });
   };
 
@@ -60,7 +68,7 @@ const Add = () => {
     });
   };
 
-  const handleReciStepChange = (e) => {
+  const handleReciGuideChange = (e) => {
     setRecipe((prevState) => {
       return { ...prevState, directions: e.target.value };
     });
@@ -68,9 +76,21 @@ const Add = () => {
 
   const handleAddIngredientClick = (e) => {
     e.preventDefault();
-    setIngredients((prevState) => {
-      return { ...prevState, name: "" };
-    });
+
+    setRecipe((prevState) => ({
+      ...prevState,
+      ingredients: [
+        ...prevState.ingredients,
+        {
+          id: idCounter,
+          name: ingredients.name,
+        },
+      ],
+    }));
+
+    setIngredients({ name: "" });
+
+    setIdCounter((prev) => prev + 1);
   };
 
   return (
@@ -81,61 +101,74 @@ const Add = () => {
         <h1>What's Cooking in Your Mind?</h1>
         <h3>Add a new recipe to your collection!</h3>
         <div className="form__container">
-          <TextField
-            id="outlined-basic"
-            label="Recipe Name"
-            variant="outlined"
-            onChange={handleRecipeNameChange}
-          />
+          <div>
+            <TextField
+              sx={fieldStyle}
+              id="outlined-basic"
+              label="Recipe Name"
+              variant="outlined"
+              onChange={handleRecipeNameChange}
+            />
+          </div>
           <FormControl className="recipe__form">
-            <InputLabel id="demo-simple-select-label">Age</InputLabel>
+            <InputLabel id="demo-simple-select-label">Category</InputLabel>
             <Select
               labelId="demo-simple-select-label"
+              sx={fieldStyle}
               id="demo-simple-select"
               value={""}
-              label="Age"
+              label="category"
               onChange={handleReciCatChange}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              <MenuItem value={"desserts"}>Desserts</MenuItem>
+              <MenuItem value={"main course"}>Main Course</MenuItem>
+              <MenuItem value={"appetizers"}>Appetizers</MenuItem>
+              <MenuItem value={"beverages"}>Beverages</MenuItem>
+              <MenuItem value={"vegetarian"}>Vegetarian</MenuItem>
             </Select>
 
-            <label>
-              Recipe Description:
-              <textarea onChange={handleReciDescChange} />
-            </label>
+            <TextField
+              sx={fieldStyle}
+              id="outlined-basic"
+              label="Description"
+              variant="outlined"
+              onChange={handleReciDescChange}
+            />
 
-            <label>
-              Image URL:
-              <input type="text" onChange={handleReciUrlChange} />
-            </label>
+            <TextField
+              sx={fieldStyle}
+              id="outlined-basic"
+              label="Image URL"
+              variant="outlined"
+              onChange={handleReciUrlChange}
+            />
 
             <div>
               <h4>Ingredients</h4>
-              <div>
-                <input
-                  type="text"
-                  placeholder="Ingredient 1"
-                  value={ingredients.name}
-                  onChange={handleAddIngredientsChange}
-                />
-              </div>
+
+              <TextField
+                sx={fieldStyle}
+                id="outlined-basic"
+                label="Ingredient"
+                variant="outlined"
+                value={ingredients.name}
+                onChange={handleAddIngredientsChange}
+              />
+
               <button onClick={handleAddIngredientClick}>Add Ingredient</button>
             </div>
 
             <div>
               <h4>Directions</h4>
-              <div>
-                <label>
-                  <input
-                    type="text"
-                    placeholder="Step 1"
-                    onChange={handleReciStepChange}
-                  />
-                  <input type="text" placeholder="Instruction" />
-                </label>
-              </div>
+
+              <TextField
+                sx={fieldStyle}
+                id="outlined-basic"
+                label="Direction"
+                variant="outlined"
+                onChange={handleReciGuideChange}
+              />
+
               <button>Add Instruction</button>
             </div>
 
