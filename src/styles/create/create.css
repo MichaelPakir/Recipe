@@ -1,20 +1,41 @@
+.recipe__bg {
+  display: flex;
+  flex-direction: column;
+}
+
+.headers {
+  gap: 1rem;
+}
+
 .recipe__form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: left;
+  gap: 1rem;
 }
 
 .form__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border: 1px solid #268d73;
-  height: 25rem;
+  height: 35rem;
   padding: 5rem;
   padding-left: 5rem;
   width: 60rem;
   border-radius: 30px;
+  background-color: #d5e1df;
+  padding: 3.5rem;
+  gap: 2rem;
 }
 
 .recipe__save {
   display: flex;
   justify-content: center;
+}
+
+.create__headers {
+  color: rgb(40, 36, 36);
 }

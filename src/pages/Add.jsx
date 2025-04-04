@@ -96,26 +96,25 @@ const Add = ({ fieldStyle }) => {
       <div className="recipe__bg">
         {JSON.stringify(recipe)} <br />
         {JSON.stringify(ingredients)}
-        <h1>What's Cooking in Your Mind?</h1>
-        <h3>Add a new recipe to your collection!</h3>
+        <div className="headers">
+          <h1>What's Cooking in Your Mind?</h1>
+          <h3>Add a new recipe to your collection!</h3>
+        </div>
         <div className="form__container">
-          <div>
-            <TextField
-              sx={fieldStyle}
-              id="outlined-basic"
-              label="Recipe Name"
-              variant="outlined"
-              onChange={handleRecipeNameChange}
-            />
-          </div>
+          <TextField
+            sx={fieldStyle}
+            id="outlined-basic"
+            label="Recipe Name"
+            variant="outlined"
+            onChange={handleRecipeNameChange}
+          />
           <FormControl className="recipe__form">
-            <InputLabel id="demo-simple-select-label">Category</InputLabel>
+            <InputLabel id="recipe__select" className="recipe__select">
+              Category
+            </InputLabel>
             <Select
-              labelId="demo-simple-select-label"
               sx={fieldStyle}
-              id="demo-simple-select"
-              value={""}
-              label="category"
+              label="Category"
               onChange={handleReciCatChange}
             >
               <MenuItem value={"desserts"}>Desserts</MenuItem>
@@ -142,7 +141,7 @@ const Add = ({ fieldStyle }) => {
             />
 
             <div>
-              <h4>Ingredients</h4>
+              <h4 className="create__headers">Ingredients</h4>
 
               <TextField
                 sx={fieldStyle}
@@ -157,7 +156,7 @@ const Add = ({ fieldStyle }) => {
             </div>
 
             <div>
-              <h4>Directions</h4>
+              <h4 className="create__headers">Directions</h4>
 
               <TextField
                 sx={fieldStyle}

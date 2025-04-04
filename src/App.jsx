@@ -11,15 +11,11 @@ import RecipePage from "./components/RecipePage.jsx";
 
 const fieldStyle = {
   ".MuiInputLabel-root": {
-    color: "white",
+    color: "grey",
   },
-  ".MuiOutlinedInput-root": {
-    input: {
-      color: "white",
-    },
-  },
+
   fieldset: {
-    border: "1px solid #2befc5",
+    border: "1px solid #484f4f",
   },
 };
 

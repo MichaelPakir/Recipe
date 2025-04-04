@@ -111,3 +111,7 @@
 .recipe__info {
   text-align: left;
 }
+
+.recipe__select {
+  color: red;
+}
