@@ -8,7 +8,8 @@ import Select from "@mui/material/Select";
 import { Box } from "@mui/material";
 
 const Add = ({ fieldStyle }) => {
-  const [idCounter, setIdCounter] = useState(1);
+  const [ingIdCounter, setIngIdCounter] = useState(1);
+  const [insIdCounter, setInsIdCounter] = useState(1);
   const [recipe, setRecipe] = useState({
     title: "",
     category: "",
@@ -53,14 +54,14 @@ const Add = ({ fieldStyle }) => {
 
   const handleAddIngredientClick = (e) => {
     e.preventDefault();
-    setIdCounter((prev) => prev + 1);
+    setIngIdCounter((prev) => prev + 1);
 
     setRecipe((prevState) => ({
       ...prevState,
       ingredients: [
         ...prevState.ingredients,
         {
-          id: idCounter,
+          id: ingIdCounter,
           name: ingredients.name,
         },
       ],
@@ -77,14 +78,14 @@ const Add = ({ fieldStyle }) => {
 
   const handleAddInstructionClick = (e) => {
     e.preventDefault();
-    setIdCounter((prev) => prev + 1);
+    setInsIdCounter((prev) => prev + 1);
 
     setRecipe((prevState) => ({
       ...prevState,
       instructions: [
-        ...prevState.ingredients,
+        ...prevState.instructions,
         {
-          id: idCounter,
+          id: insIdCounter,
           name: instructions.name,
         },
       ],
