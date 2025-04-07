@@ -592,9 +592,12 @@ const App = () => {
   ]);
 
   const addRecipe = (newRecipe) => {
-    setFoods((prevState) => [
-      ...prevState,
-      { ...newRecipe, id: prevState.length + 1 },
+    setFoods((prevFoods) => [
+      ...prevFoods,
+      {
+        ...newRecipe,
+        id: prevFoods.length + 1,
+      },
     ]);
   };
 

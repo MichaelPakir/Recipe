@@ -7,7 +7,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Box } from "@mui/material";
 
-const Add = ({ fieldStyle }) => {
+const Add = ({ fieldStyle, addRecipe }) => {
   const [ingIdCounter, setIngIdCounter] = useState(1);
   const [insIdCounter, setInsIdCounter] = useState(1);
   const [recipe, setRecipe] = useState({
@@ -94,6 +94,19 @@ const Add = ({ fieldStyle }) => {
     setInstructions({ name: "" });
   };
 
+  const handleSaveRecipeClick = () => {
+    addRecipe(recipe);
+    setRecipe({
+      title: "",
+      category: "",
+      description: "",
+      image: "",
+      ingredients: [],
+      instructions: [],
+    });
+    console.log(`Saved: `);
+  };
+
   return (
     <Box>
       <div className="recipe__bg">
@@ -176,7 +189,7 @@ const Add = ({ fieldStyle }) => {
             </div>
 
             <div className="recipe__save">
-              <button>Save</button>
+              <button onClick={handleSaveRecipeClick}>Save</button>
             </div>
           </FormControl>
         </div>
