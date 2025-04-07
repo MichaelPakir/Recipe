@@ -97,7 +97,7 @@ const Add = ({ fieldStyle, foods, setFoods }) => {
   const handleSaveRecipeClick = () => {
     setFoods((prevFoods) => [
       ...prevFoods,
-      { id: prevFoods.length + 1, ...recipe.id },
+      { id: prevFoods.length + 1, ...recipe },
     ]);
 
     console.log("Saved: ", [...foods, recipe]);
