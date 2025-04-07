@@ -90,6 +90,8 @@ const Add = ({ fieldStyle }) => {
         },
       ],
     }));
+
+    setInstructions({ name: "" });
   };
 
   return (
@@ -164,6 +166,7 @@ const Add = ({ fieldStyle }) => {
                 id="outlined-basic"
                 label="Direction"
                 variant="outlined"
+                value={instructions.name}
                 onChange={handleReciGuideChange}
               />
 

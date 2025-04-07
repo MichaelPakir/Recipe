@@ -27,7 +27,7 @@ const App = () => {
     { label: "Add", path: "/add" },
   ]);
 
-  const [foods] = useState([
+  const [foods, setFoods] = useState([
     {
       id: 1,
       title: "Sinigang na Baka",
@@ -591,6 +591,13 @@ const App = () => {
     },
   ]);
 
+  const addRecipe = (newRecipe) => {
+    setFoods((prevState) => [
+      ...prevState,
+      { ...newRecipe, id: prevState.length + 1 },
+    ]);
+  };
+
   return (
     <Router>
       <section>
@@ -600,7 +607,10 @@ const App = () => {
             <Route path="/" element={<Menu />} />
             <Route path="/edit" element={<Edit />} />
             <Route path="/fav" element={<Fav />} />
-            <Route path="/add" element={<Add fieldStyle={fieldStyle} />} />
+            <Route
+              path="/add"
+              element={<Add fieldStyle={fieldStyle} addRecipe={addRecipe} />}
+            />
             <Route path="/:filter" element={<Cards />} />
             <Route path="/recipe/:id" element={<RecipePage foods={foods} />} />
           </Route>
