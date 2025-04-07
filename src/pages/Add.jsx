@@ -7,7 +7,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Box } from "@mui/material";
 
-const Add = ({ fieldStyle }) => {
+const Add = ({ fieldStyle, foods, setFoods }) => {
   const [ingIdCounter, setIngIdCounter] = useState(1);
   const [insIdCounter, setInsIdCounter] = useState(1);
   const [recipe, setRecipe] = useState({
@@ -95,14 +95,17 @@ const Add = ({ fieldStyle }) => {
   };
 
   const handleSaveRecipeClick = () => {
-    console.log(`Saved Recipe: `, recipe);
+    setFoods((prevFoods) => [
+      ...prevFoods,
+      { id: prevFoods.length + 1, ...recipe },
+    ]);
+
+    console.log("Saved: ", [...foods, recipe]);
   };
 
   return (
     <Box>
       <div className="recipe__bg">
-        {JSON.stringify(recipe)} <br />
-        {JSON.stringify(ingredients)}
         <div className="headers">
           <h1>What's Cooking in Your Mind?</h1>
           <h3>Add a new recipe to your collection!</h3>

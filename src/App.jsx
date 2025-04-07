@@ -612,10 +612,20 @@ const App = () => {
             <Route path="/fav" element={<Fav />} />
             <Route
               path="/add"
-              element={<Add fieldStyle={fieldStyle} addRecipe={addRecipe} />}
+              element={
+                <Add
+                  fieldStyle={fieldStyle}
+                  addRecipe={addRecipe}
+                  foods={foods}
+                  setFoods={setFoods}
+                />
+              }
             />
             <Route path="/:filter" element={<Cards />} />
-            <Route path="/recipe/:id" element={<RecipePage foods={foods} />} />
+            <Route
+              path="/recipe/:id"
+              element={<RecipePage setFoods={setFoods} />}
+            />
           </Route>
         </Routes>
       </section>
