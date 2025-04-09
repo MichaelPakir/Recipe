@@ -7,89 +7,105 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Box } from "@mui/material";
 
-const Add = ({ fieldStyle, foods, setFoods }) => {
+const Add = ({ fieldStyle, setFoods }) => {
   const [ingIdCounter, setIngIdCounter] = useState(1);
-  const [insIdCounter, setInsIdCounter] = useState(1);
+  const [dirIdCounter, setDirIdCounter] = useState(1);
   const [recipe, setRecipe] = useState({
     title: "",
     category: "",
     description: "",
     image: "",
     ingredients: [],
-    instructions: [],
+    directions: [],
   });
 
-  const [ingredients, setIngredients] = useState({});
-  const [instructions, setInstructions] = useState({});
+  const [ingredients, setIngredients] = useState("");
+  const [directions, setDirections] = useState("");
+
   const handleRecipeNameChange = (e) => {
-    setRecipe((prevState) => {
-      return {
-        ...prevState,
-        title: e.target.value,
-      };
-    });
+    setRecipe((prevState) => ({
+      ...prevState,
+      title: e.target.value,
+    }));
   };
+
   const handleReciCatChange = (e) => {
-    setRecipe((prevState) => {
-      return { ...prevState, category: e.target.value };
-    });
+    setRecipe((prevState) => ({
+      ...prevState,
+      category: e.target.value,
+    }));
   };
 
   const handleReciDescChange = (e) => {
-    setRecipe((prevState) => {
-      return { ...prevState, description: e.target.value };
-    });
+    setRecipe((prevState) => ({
+      ...prevState,
+      description: e.target.value,
+    }));
   };
 
   const handleReciUrlChange = (e) => {
-    setRecipe((prevState) => {
-      return { ...prevState, image: e.target.value };
-    });
+    setRecipe((prevState) => ({
+      ...prevState,
+      image: e.target.value,
+    }));
   };
+
   const handleAddIngredientsChange = (e) => {
-    const newIngredientName = e.target.value;
-    setIngredients({ name: newIngredientName });
+    setIngredients(e.target.value);
   };
+
   const handleAddIngredientClick = (e) => {
     e.preventDefault();
-    setIngIdCounter((prev) => prev + 1);
+    if (ingredients === "") return;
     setRecipe((prevState) => ({
       ...prevState,
       ingredients: [
         ...prevState.ingredients,
         {
           id: ingIdCounter,
-          name: ingredients.name,
+          name: ingredients,
         },
       ],
     }));
+    setIngIdCounter((prev) => prev + 1);
+    setIngredients("");
+  };
 
-    setIngredients({ name: "" });
-  };
   const handleReciGuideChange = (e) => {
-    const newInstructionName = e.target.value;
-    setInstructions({ name: newInstructionName });
+    setDirections(e.target.value);
   };
-  const handleAddInstructionClick = (e) => {
+
+  const handleAddDirectionClick = (e) => {
     e.preventDefault();
-    setInsIdCounter((prev) => prev + 1);
+    if (directions === "") return;
     setRecipe((prevState) => ({
       ...prevState,
-      instructions: [
-        ...prevState.instructions,
+      directions: [
+        ...prevState.directions,
         {
-          id: insIdCounter,
-          name: instructions.name,
+          id: dirIdCounter,
+          name: directions,
         },
       ],
     }));
-    setInstructions({ name: "" });
+    setDirIdCounter((prev) => prev + 1);
+    setDirections("");
   };
 
   const handleSaveRecipeClick = () => {
-    setFoods((prevFoods) => [...prevFoods, { id: prevFoods + 1, ...recipe }]);
-    console.log("Saved: ", [...foods, recipe]);
+    setIngIdCounter(1);
+    setDirIdCounter(1);
+
+    setFoods((prevFoods) => {
+      const updatedFoods = [
+        ...prevFoods,
+        { id: prevFoods.length + 1, ...recipe },
+      ];
+      console.log("Saved: ", updatedFoods);
+      return updatedFoods;
+    });
   };
+
   return (
     <Box>
       <div className="recipe__bg">
@@ -104,6 +120,7 @@ const Add = ({ fieldStyle, foods, setFoods }) => {
             label="Recipe Name"
             variant="outlined"
             onChange={handleRecipeNameChange}
+            value={recipe.title}
           />
           <FormControl className="recipe__form">
             <InputLabel id="recipe__select" className="recipe__select">
@@ -113,9 +130,10 @@ const Add = ({ fieldStyle, foods, setFoods }) => {
               sx={fieldStyle}
               label="Category"
               onChange={handleReciCatChange}
+              value={recipe.category}
             >
               <MenuItem value={"desserts"}>Desserts</MenuItem>
-              <MenuItem value={"main course"}>Main Course</MenuItem>
+              <MenuItem value={"main-course"}>Main Course</MenuItem>
               <MenuItem value={"appetizers"}>Appetizers</MenuItem>
               <MenuItem value={"beverages"}>Beverages</MenuItem>
               <MenuItem value={"vegetarian"}>Vegetarian</MenuItem>
@@ -127,6 +145,7 @@ const Add = ({ fieldStyle, foods, setFoods }) => {
               label="Description"
               variant="outlined"
               onChange={handleReciDescChange}
+              value={recipe.description}
             />
 
             <TextField
@@ -135,17 +154,17 @@ const Add = ({ fieldStyle, foods, setFoods }) => {
               label="Image URL"
               variant="outlined"
               onChange={handleReciUrlChange}
+              value={recipe.image}
             />
 
             <div>
-              {" "}
               <h4 className="create__headers">Ingredients</h4>
               <TextField
                 sx={fieldStyle}
                 id="outlined-basic"
                 label="Ingredient"
                 variant="outlined"
-                value={ingredients.name}
+                value={ingredients}
                 onChange={handleAddIngredientsChange}
               />
               <button onClick={handleAddIngredientClick}>Add Ingredient</button>
@@ -157,14 +176,10 @@ const Add = ({ fieldStyle, foods, setFoods }) => {
                 id="outlined-basic"
                 label="Direction"
                 variant="outlined"
-                value={instructions.name}
+                value={directions}
                 onChange={handleReciGuideChange}
               />
-
-              <button onClick={handleAddInstructionClick}>
-                {" "}
-                Add Instruction{" "}
-              </button>
+              <button onClick={handleAddDirectionClick}>Add Direction</button>
             </div>
             <div className="recipe__save">
               <button onClick={handleSaveRecipeClick}>Save</button>
@@ -175,4 +190,5 @@ const Add = ({ fieldStyle, foods, setFoods }) => {
     </Box>
   );
 };
+
 export default Add;

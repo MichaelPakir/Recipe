@@ -607,7 +607,7 @@ const App = () => {
         <Routes>
           <Route element={<MainLayout navLinks={navLinks} />}>
             <Route index element={<Menu foods={foods} />} />
-            <Route path="/" element={<Menu />} />
+            <Route path="/" element={<Menu foods={foods} />} />
             <Route path="/edit" element={<Edit />} />
             <Route path="/fav" element={<Fav />} />
             <Route
@@ -616,7 +616,6 @@ const App = () => {
                 <Add
                   fieldStyle={fieldStyle}
                   addRecipe={addRecipe}
-                  foods={foods}
                   setFoods={setFoods}
                 />
               }
