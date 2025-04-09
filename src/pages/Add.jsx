@@ -21,13 +21,14 @@ const Add = ({ fieldStyle, foods, setFoods }) => {
 
   const [ingredients, setIngredients] = useState({});
   const [instructions, setInstructions] = useState({});
-
   const handleRecipeNameChange = (e) => {
     setRecipe((prevState) => {
-      return { ...prevState, title: e.target.value };
+      return {
+        ...prevState,
+        title: e.target.value,
+      };
     });
   };
-
   const handleReciCatChange = (e) => {
     setRecipe((prevState) => {
       return { ...prevState, category: e.target.value };
@@ -45,17 +46,13 @@ const Add = ({ fieldStyle, foods, setFoods }) => {
       return { ...prevState, image: e.target.value };
     });
   };
-
   const handleAddIngredientsChange = (e) => {
     const newIngredientName = e.target.value;
-
     setIngredients({ name: newIngredientName });
   };
-
   const handleAddIngredientClick = (e) => {
     e.preventDefault();
     setIngIdCounter((prev) => prev + 1);
-
     setRecipe((prevState) => ({
       ...prevState,
       ingredients: [
@@ -69,17 +66,13 @@ const Add = ({ fieldStyle, foods, setFoods }) => {
 
     setIngredients({ name: "" });
   };
-
   const handleReciGuideChange = (e) => {
     const newInstructionName = e.target.value;
-
     setInstructions({ name: newInstructionName });
   };
-
   const handleAddInstructionClick = (e) => {
     e.preventDefault();
     setInsIdCounter((prev) => prev + 1);
-
     setRecipe((prevState) => ({
       ...prevState,
       instructions: [
@@ -90,19 +83,13 @@ const Add = ({ fieldStyle, foods, setFoods }) => {
         },
       ],
     }));
-
     setInstructions({ name: "" });
   };
 
   const handleSaveRecipeClick = () => {
-    setFoods((prevFoods) => [
-      ...prevFoods,
-      { id: prevFoods.length + 1, ...recipe },
-    ]);
-
+    setFoods((prevFoods) => [...prevFoods, { id: prevFoods + 1, ...recipe }]);
     console.log("Saved: ", [...foods, recipe]);
   };
-
   return (
     <Box>
       <div className="recipe__bg">
@@ -151,8 +138,8 @@ const Add = ({ fieldStyle, foods, setFoods }) => {
             />
 
             <div>
+              {" "}
               <h4 className="create__headers">Ingredients</h4>
-
               <TextField
                 sx={fieldStyle}
                 id="outlined-basic"
@@ -161,13 +148,10 @@ const Add = ({ fieldStyle, foods, setFoods }) => {
                 value={ingredients.name}
                 onChange={handleAddIngredientsChange}
               />
-
               <button onClick={handleAddIngredientClick}>Add Ingredient</button>
             </div>
-
             <div>
               <h4 className="create__headers">Directions</h4>
-
               <TextField
                 sx={fieldStyle}
                 id="outlined-basic"
@@ -178,10 +162,10 @@ const Add = ({ fieldStyle, foods, setFoods }) => {
               />
 
               <button onClick={handleAddInstructionClick}>
-                Add Instruction
+                {" "}
+                Add Instruction{" "}
               </button>
             </div>
-
             <div className="recipe__save">
               <button onClick={handleSaveRecipeClick}>Save</button>
             </div>
@@ -191,5 +175,4 @@ const Add = ({ fieldStyle, foods, setFoods }) => {
     </Box>
   );
 };
-
 export default Add;
