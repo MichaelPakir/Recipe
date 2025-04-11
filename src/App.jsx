@@ -617,6 +617,7 @@ const App = () => {
                   fieldStyle={fieldStyle}
                   addRecipe={addRecipe}
                   setFoods={setFoods}
+                  foods={foods}
                 />
               }
             />
