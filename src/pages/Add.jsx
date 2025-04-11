@@ -7,7 +7,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Box } from "@mui/material";
 
-const Add = ({ fieldStyle, foods, setFoods }) => {
+const Add = ({ fieldStyle, setFoods }) => {
   const [ingIdCounter, setIngIdCounter] = useState(1);
   const [dirIdCounter, setDirIdCounter] = useState(1);
   const [recipe, setRecipe] = useState({

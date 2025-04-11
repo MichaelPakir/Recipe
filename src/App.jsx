@@ -608,7 +608,12 @@ const App = () => {
           <Route element={<MainLayout navLinks={navLinks} />}>
             <Route index element={<Menu foods={foods} />} />
             <Route path="/" element={<Menu foods={foods} />} />
-            <Route path="/edit" element={<Edit />} />
+            <Route path="/edit" element={<Edit foods={foods} />}>
+              <Route
+                path=":id"
+                element={<RecipePage setFoods={setFoods} foods={foods} />}
+              />
+            </Route>
             <Route path="/fav" element={<Fav />} />
             <Route
               path="/add"
@@ -621,10 +626,10 @@ const App = () => {
                 />
               }
             />
-            <Route path="/:filter" element={<Cards />} />
+            <Route path="/:filter" element={<Cards foods={foods} />} />
             <Route
               path="/recipe/:id"
-              element={<RecipePage setFoods={setFoods} />}
+              element={<RecipePage foods={foods} setFoods={setFoods} />}
             />
           </Route>
         </Routes>

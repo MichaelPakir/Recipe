@@ -3,12 +3,11 @@ import { Link, useParams } from "react-router-dom";
 
 const RecipePage = ({ foods }) => {
   const { id } = useParams();
-
   const food = foods.find((item) => item.id === parseInt(id));
 
   return (
     <section className="recipe__container">
-      <Link to={"/"} className="recipe__btn">
+      <Link to="/" className="recipe__btn">
         Go Back
       </Link>
       <h1 className="recipe__title">{food.title}</h1>
@@ -17,23 +16,17 @@ const RecipePage = ({ foods }) => {
 
       <div className="recipe__info">
         <h2>Ingredients:</h2>
-        {food.ingredients.map((ingredient) => (
-          <ul>
-            <li>
-              <p key={ingredient.id}>{ingredient.name}</p>
-            </li>
-          </ul>
-        ))}
+        <ul>
+          {food.ingredients.map((ingredient, index) => (
+            <li key={index}>{ingredient.name}</li>
+          ))}
+        </ul>
 
         <h2>Directions:</h2>
-        {food.directions.map((direction) => (
-          <div key={direction.id}>
+        {food.directions.map((direction, index) => (
+          <div key={index}>
             <h4 className="recipe__step">{direction.title}</h4>
-            <ul>
-              <li>
-                <p>{direction.name}</p>
-              </li>
-            </ul>
+            <p>{direction.name}</p>
           </div>
         ))}
       </div>
