@@ -9,7 +9,7 @@ const Edit = ({ foods }) => {
       <h1>Edit Your Masterpiece</h1>
       <h3>Make changes to your recipe and perfect it to your taste!</h3>
       <div>
-        <Cards foods={foods} />
+        <Cardsv2 foods={foods} />
         <Outlet />
       </div>
     </div>

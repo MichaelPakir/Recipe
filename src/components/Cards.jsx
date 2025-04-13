@@ -61,7 +61,6 @@ const Cards = ({ foods }) => {
         >
           Vegetarian
         </span>
-        not
       </div>
 
       <div className="food__container container">

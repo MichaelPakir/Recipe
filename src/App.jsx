@@ -8,6 +8,7 @@ import Fav from "./pages/Fav.jsx";
 import Add from "./pages/Add.jsx";
 import Cards from "./components/Cards.jsx";
 import RecipePage from "./components/RecipePage.jsx";
+import EditRecipe from "./components/EditRecipe";
 
 const fieldStyle = {
   ".MuiInputLabel-root": {
@@ -632,6 +633,11 @@ const App = () => {
               element={<RecipePage foods={foods} setFoods={setFoods} />}
             />
           </Route>
+
+          <Route
+            path="/edit/recipe/:id"
+            element={<EditRecipe foods={foods} setFoods={setFoods} />}
+          />
         </Routes>
       </section>
     </Router>
