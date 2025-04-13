@@ -169,6 +169,13 @@ const Add = ({ fieldStyle, setFoods }) => {
               />
               <button onClick={handleAddIngredientClick}>Add Ingredient</button>
             </div>
+            <div className="freakingJson">
+              <ul>
+                {recipe.ingredients.map((ingredient) => (
+                  <li key={ingredient.id}>{ingredient.name}</li>
+                ))}
+              </ul>
+            </div>
             <div>
               <h4 className="create__headers">Directions</h4>
               <TextField

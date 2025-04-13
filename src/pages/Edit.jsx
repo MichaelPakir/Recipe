@@ -1,6 +1,7 @@
 import React from "react";
 import Cards from "../components/Cards";
 import { Outlet } from "react-router-dom";
+import Cardsv2 from "./../components/Cardsv2";
 
 const Edit = ({ foods }) => {
   return (
