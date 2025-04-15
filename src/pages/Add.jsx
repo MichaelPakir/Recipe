@@ -141,7 +141,7 @@ const Add = ({
           </div>
         )}
 
-        {showEditName && <h1>Edit Recipe: {newRecipe.title}</h1>}
+        {showEditName && <h1>Edit Recipe: {recipe.title}</h1>}
 
         <div className="form__container">
           {showRecipeNameField && (
@@ -254,7 +254,6 @@ const Add = ({
                 value={ingredients}
                 onChange={handleAddIngredientsChange}
               />
-
               <button onClick={handleAddIngredientClick}>Add Ingredient</button>
             </div>
             <div className="freakingJson">
@@ -289,7 +288,7 @@ const Add = ({
               <div className="freakingJson">
                 {showRecipeDirection && (
                   <ul>
-                    {newRecipe.directions.map((direction) => (
+                    {recipe.directions.map((direction) => (
                       <li key={direction.id}>{direction.name}</li>
                     ))}
                   </ul>
