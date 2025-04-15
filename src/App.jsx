@@ -275,7 +275,7 @@ const App = () => {
       description:
         "Leche flan is a rich Filipino baked custard dessert with a layer of smooth caramel. My mom always made this flan for dessert and I always loved it!",
       image:
-        "https://cookingmatters.org/wp-content/uploads/2021/11/Cooking-Matters-Recipe-SquashOrzo.png",
+        "https://i0.wp.com/thenotsocreativecook.com/wp-content/uploads/2013/09/thenotsocreativecook-lecheflan3.jpg",
       ingredients: [
         {
           id: 1,

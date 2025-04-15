@@ -7,7 +7,12 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Box } from "@mui/material";
 
-const Add = ({ fieldStyle, setFoods }) => {
+const Add = ({
+  fieldStyle,
+  setFoods,
+  showSaveButton = true,
+  showUpdateButton = false,
+}) => {
   const [ingIdCounter, setIngIdCounter] = useState(1);
   const [dirIdCounter, setDirIdCounter] = useState(1);
   const [recipe, setRecipe] = useState({
@@ -187,9 +192,22 @@ const Add = ({ fieldStyle, setFoods }) => {
                 onChange={handleReciGuideChange}
               />
               <button onClick={handleAddDirectionClick}>Add Direction</button>
+              <div className="freakingJson">
+                <ul>
+                  {recipe.directions.map((direction) => (
+                    <li key={direction.id}>{direction.name}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
             <div className="recipe__save">
-              <button onClick={handleSaveRecipeClick}>Save</button>
+              {showSaveButton && (
+                <button onClick={handleSaveRecipeClick}>Save</button>
+              )}
+
+              {showUpdateButton && (
+                <button onClick={handleSaveRecipeClick}>Update</button>
+              )}
             </div>
           </FormControl>
         </div>
