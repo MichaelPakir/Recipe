@@ -141,7 +141,7 @@ const Add = ({
           </div>
         )}
 
-        {showEditName && <h1>Edit Recipe: {recipe.title}</h1>}
+        {showEditName && <h1>Edit Recipe: {newRecipe.title}</h1>}
 
         <div className="form__container">
           {showRecipeNameField && (
