@@ -22,7 +22,6 @@
   align-items: center;
   border: 2px solid #2befc5;
   max-height: 100rem;
-
   padding: 5rem;
   padding-left: 5rem;
   width: 60rem;
@@ -32,6 +31,12 @@
   gap: 2rem;
 }
 
+.form__content {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+}
+
 .recipe__save {
   display: flex;
   justify-content: center;
@@ -39,4 +44,36 @@
 
 .create__headers {
   color: rgb(40, 36, 36);
+}
+
+/* EditForm CSS */
+.editform__section {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+.form__upper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50rem;
+}
+
+.form__category {
+  display: flex;
+  width: 50rem;
+  justify-content: center;
+}
+
+.form-recipe__name {
+  width: 50rem;
+}
+
+.form-recipe__category {
+  width: 50rem;
+}
+
+.form__lower {
+  display: flex;
+  flex-direction: column;
 }

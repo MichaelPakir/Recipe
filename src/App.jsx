@@ -636,7 +636,13 @@ const App = () => {
 
           <Route
             path="/edit/recipe/:id"
-            element={<EditRecipe foods={foods} setFoods={setFoods} />}
+            element={
+              <EditRecipe
+                foods={foods}
+                setFoods={setFoods}
+                fieldStyle={fieldStyle}
+              />
+            }
           />
         </Routes>
       </section>
