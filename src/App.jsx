@@ -8,6 +8,17 @@ import Fav from "./pages/Fav.jsx";
 import Add from "./pages/Add.jsx";
 import Cards from "./components/Cards.jsx";
 import RecipePage from "./components/RecipePage.jsx";
+import EditRecipe from "./components/EditRecipe";
+
+const fieldStyle = {
+  ".MuiInputLabel-root": {
+    color: "grey",
+  },
+
+  fieldset: {
+    border: "1px solid #484f4f",
+  },
+};
 
 const App = () => {
   const [navLinks] = useState([
@@ -17,7 +28,7 @@ const App = () => {
     { label: "Add", path: "/add" },
   ]);
 
-  const [foods] = useState([
+  const [foods, setFoods] = useState([
     {
       id: 1,
       title: "Sinigang na Baka",
@@ -86,7 +97,7 @@ const App = () => {
       title: "Classic Macaroni Salad",
       description:
         "This creamy macaroni salad always gets lots of compliments. It's an easy recipe to make with macaroni pasta, celery, onion, bell pepper, carrot, and pimentos and has a pleasing tangy dressing that everyone seems to love!",
-      category: "beverages",
+      category: "appetizers",
       image:
         "https://yummykitchentv.com/wp-content/uploads/2022/04/chicken-macaroni-salad-recipe.jpg",
       ingredients: [
@@ -264,7 +275,7 @@ const App = () => {
       description:
         "Leche flan is a rich Filipino baked custard dessert with a layer of smooth caramel. My mom always made this flan for dessert and I always loved it!",
       image:
-        "https://cookingmatters.org/wp-content/uploads/2021/11/Cooking-Matters-Recipe-SquashOrzo.png",
+        "https://i0.wp.com/thenotsocreativecook.com/wp-content/uploads/2013/09/thenotsocreativecook-lecheflan3.jpg",
       ingredients: [
         {
           id: 1,
@@ -581,19 +592,58 @@ const App = () => {
     },
   ]);
 
+  const addRecipe = (newRecipe) => {
+    setFoods((prevFoods) => [
+      ...prevFoods,
+      {
+        ...newRecipe,
+        id: prevFoods.length + 1,
+      },
+    ]);
+  };
+
   return (
     <Router>
       <section>
         <Routes>
           <Route element={<MainLayout navLinks={navLinks} />}>
             <Route index element={<Menu foods={foods} />} />
-            <Route path="/" element={<Menu />} />
-            <Route path="/edit" element={<Edit />} />
+            <Route path="/" element={<Menu foods={foods} />} />
+            <Route path="/edit" element={<Edit foods={foods} />}>
+              <Route
+                path=":id"
+                element={<RecipePage setFoods={setFoods} foods={foods} />}
+              />
+            </Route>
             <Route path="/fav" element={<Fav />} />
-            <Route path="/add" element={<Add />} />
-            <Route path="/:filter" element={<Cards />} />
-            <Route path="/recipe/:id" element={<RecipePage foods={foods} />} />
+            <Route
+              path="/add"
+              element={
+                <Add
+                  fieldStyle={fieldStyle}
+                  addRecipe={addRecipe}
+                  setFoods={setFoods}
+                  foods={foods}
+                />
+              }
+            />
+            <Route path="/:filter" element={<Cards foods={foods} />} />
+            <Route
+              path="/recipe/:id"
+              element={<RecipePage foods={foods} setFoods={setFoods} />}
+            />
           </Route>
+
+          <Route
+            path="/edit/recipe/:id"
+            element={
+              <EditRecipe
+                foods={foods}
+                setFoods={setFoods}
+                fieldStyle={fieldStyle}
+              />
+            }
+          />
         </Routes>
       </section>
     </Router>
