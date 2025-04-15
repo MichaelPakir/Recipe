@@ -111,6 +111,8 @@ const Add = ({
     });
   };
 
+  const handleUpdateRecipeClick = () => {};
+
   return (
     <Box>
       <div className="recipe__bg">
@@ -191,6 +193,7 @@ const Add = ({
                 value={directions}
                 onChange={handleReciGuideChange}
               />
+
               <button onClick={handleAddDirectionClick}>Add Direction</button>
               <div className="freakingJson">
                 <ul>
@@ -200,13 +203,14 @@ const Add = ({
                 </ul>
               </div>
             </div>
+
             <div className="recipe__save">
               {showSaveButton && (
                 <button onClick={handleSaveRecipeClick}>Save</button>
               )}
 
               {showUpdateButton && (
-                <button onClick={handleSaveRecipeClick}>Update</button>
+                <button onClick={handleUpdateRecipeClick}>Update</button>
               )}
             </div>
           </FormControl>
