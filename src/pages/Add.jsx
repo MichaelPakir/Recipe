@@ -6,13 +6,31 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Box } from "@mui/material";
+import { useParams } from "react-router";
 
 const Add = ({
   fieldStyle,
   setFoods,
+  foods,
   showSaveButton = true,
+  showHeader = true,
+  showEditName = false,
   showUpdateButton = false,
+  showRecipeNameField = true,
+  showRecipeCategory = true,
+  showRecipeDescription = true,
+  showRecipeImage = true,
+  showRecipeIngredient = true,
+  showRecipeDirection = true,
+  showNewRecipeNameField = false,
+  showNewRecipeCategory = false,
+  showNewRecipeDescription = false,
+  showNewRecipeImage = false,
+  showNewRecipeIngredient = false,
+  showNewRecipeDirection = false,
 }) => {
+  const { id } = useParams();
+  const newRecipe = foods.find((food) => food.id === parseInt(id));
   const [ingIdCounter, setIngIdCounter] = useState(1);
   const [dirIdCounter, setDirIdCounter] = useState(1);
   const [recipe, setRecipe] = useState({
@@ -116,53 +134,115 @@ const Add = ({
   return (
     <Box>
       <div className="recipe__bg">
-        <div className="headers">
-          <h1>What's Cooking in Your Mind?</h1>
-          <h3>Add a new recipe to your collection!</h3>
-        </div>
+        {showHeader && (
+          <div className="headers">
+            <h1>What's Cooking in Your Mind?</h1>
+            <h3>Add a new recipe to your collection!</h3>
+          </div>
+        )}
+
+        {showEditName && <h1>Edit Recipe: {newRecipe.title}</h1>}
+
         <div className="form__container">
-          <TextField
-            sx={fieldStyle}
-            id="outlined-basic"
-            label="Recipe Name"
-            variant="outlined"
-            onChange={handleRecipeNameChange}
-            value={recipe.title}
-          />
+          {showRecipeNameField && (
+            <TextField
+              sx={fieldStyle}
+              id="outlined-basic"
+              label="Recipe Name"
+              variant="outlined"
+              onChange={handleRecipeNameChange}
+              value={recipe.title}
+            />
+          )}
+
+          {showNewRecipeNameField && (
+            <TextField
+              sx={fieldStyle}
+              id="outlined-basic"
+              label="Recipe Name"
+              variant="outlined"
+              onChange={handleRecipeNameChange}
+              value={newRecipe.title}
+            />
+          )}
+
           <FormControl className="recipe__form">
             <InputLabel id="recipe__select" className="recipe__select">
               Category
             </InputLabel>
-            <Select
-              sx={fieldStyle}
-              label="Category"
-              onChange={handleReciCatChange}
-              value={recipe.category}
-            >
-              <MenuItem value={"desserts"}>Desserts</MenuItem>
-              <MenuItem value={"main-course"}>Main Course</MenuItem>
-              <MenuItem value={"appetizers"}>Appetizers</MenuItem>
-              <MenuItem value={"beverages"}>Beverages</MenuItem>
-              <MenuItem value={"vegetarian"}>Vegetarian</MenuItem>
-            </Select>
+            {showRecipeCategory && (
+              <Select
+                sx={fieldStyle}
+                label="Category"
+                onChange={handleReciCatChange}
+                value={recipe.category}
+              >
+                <MenuItem value={"desserts"}>Desserts</MenuItem>
+                <MenuItem value={"main-course"}>Main Course</MenuItem>
+                <MenuItem value={"appetizers"}>Appetizers</MenuItem>
+                <MenuItem value={"beverages"}>Beverages</MenuItem>
+                <MenuItem value={"vegetarian"}>Vegetarian</MenuItem>
+              </Select>
+            )}
 
-            <TextField
-              sx={fieldStyle}
-              id="outlined-basic"
-              label="Description"
-              variant="outlined"
-              onChange={handleReciDescChange}
-              value={recipe.description}
-            />
+            {showNewRecipeCategory && (
+              <Select
+                sx={fieldStyle}
+                label="Category"
+                onChange={handleReciCatChange}
+                value={newRecipe.category}
+              >
+                <MenuItem value={"desserts"}>Desserts</MenuItem>
+                <MenuItem value={"main-course"}>Main Course</MenuItem>
+                <MenuItem value={"appetizers"}>Appetizers</MenuItem>
+                <MenuItem value={"beverages"}>Beverages</MenuItem>
+                <MenuItem value={"vegetarian"}>Vegetarian</MenuItem>
+              </Select>
+            )}
 
-            <TextField
-              sx={fieldStyle}
-              id="outlined-basic"
-              label="Image URL"
-              variant="outlined"
-              onChange={handleReciUrlChange}
-              value={recipe.image}
-            />
+            {showRecipeDescription && (
+              <TextField
+                sx={fieldStyle}
+                id="outlined-basic"
+                label="Description"
+                variant="outlined"
+                onChange={handleReciDescChange}
+                value={recipe.description}
+              />
+            )}
+
+            {showNewRecipeDescription && (
+              <TextField
+                sx={fieldStyle}
+                id="outlined-basic"
+                label="Description"
+                variant="outlined"
+                onChange={handleReciDescChange}
+                value={newRecipe.description}
+              />
+            )}
+
+            {showRecipeImage && (
+              <TextField
+                sx={fieldStyle}
+                id="outlined-basic"
+                label="Image URL"
+                variant="outlined"
+                onChange={handleReciUrlChange}
+                value={recipe.image}
+              />
+            )}
+
+            {showNewRecipeImage && (
+              <TextField
+                sx={fieldStyle}
+                id="outlined-basic"
+                label="Image URL"
+                variant="outlined"
+                onChange={handleReciUrlChange}
+                value={newRecipe.image}
+              />
+            )}
 
             <div>
               <h4 className="create__headers">Ingredients</h4>
@@ -174,14 +254,25 @@ const Add = ({
                 value={ingredients}
                 onChange={handleAddIngredientsChange}
               />
+
               <button onClick={handleAddIngredientClick}>Add Ingredient</button>
             </div>
             <div className="freakingJson">
-              <ul>
-                {recipe.ingredients.map((ingredient) => (
-                  <li key={ingredient.id}>{ingredient.name}</li>
-                ))}
-              </ul>
+              {showRecipeIngredient && (
+                <ul>
+                  {recipe.ingredients.map((ingredient) => (
+                    <li key={ingredient.id}>{ingredient.name}</li>
+                  ))}
+                </ul>
+              )}
+
+              {showNewRecipeIngredient && (
+                <ul>
+                  {newRecipe.ingredients.map((ingredient) => (
+                    <li key={ingredient.id}>{ingredient.name}</li>
+                  ))}
+                </ul>
+              )}
             </div>
             <div>
               <h4 className="create__headers">Directions</h4>
@@ -196,11 +287,21 @@ const Add = ({
 
               <button onClick={handleAddDirectionClick}>Add Direction</button>
               <div className="freakingJson">
-                <ul>
-                  {recipe.directions.map((direction) => (
-                    <li key={direction.id}>{direction.name}</li>
-                  ))}
-                </ul>
+                {showRecipeDirection && (
+                  <ul>
+                    {newRecipe.directions.map((direction) => (
+                      <li key={direction.id}>{direction.name}</li>
+                    ))}
+                  </ul>
+                )}
+
+                {showNewRecipeDirection && (
+                  <ul>
+                    {newRecipe.directions.map((direction) => (
+                      <li key={direction.id}>{direction.name}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </div>
 
