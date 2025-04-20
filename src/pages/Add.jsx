@@ -7,6 +7,8 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Box } from "@mui/material";
 import { useParams } from "react-router";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../database/firebase.js";
 
 const Add = ({ fieldStyle, setFoods, foods }) => {
   const { id } = useParams();
@@ -106,21 +108,30 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
     setDirections("");
   };
 
-  const handleSaveRecipeClick = () => {
-    setIngIdCounter(1);
-    setDirIdCounter(1);
+  const handleSaveRecipeClick = async () => {
+    try {
+      setIngIdCounter(1);
+      setDirIdCounter(1);
 
+      const docRef = await addDoc(collection(db, "recipes"), recipe);
+      console.log("Recipe added to Firebase with ID: ", docRef.id);
+
+      setFoods((prevFoods) => [...prevFoods, { id: docRef.id, ...recipe }]);
+    } catch (error) {
+      console.log("Error: ", error);
+    }
+  };
+
+  const handleUpdateRecipeClick = () => {
     setFoods((prevFoods) => {
-      const updatedFoods = [
-        ...prevFoods,
-        { id: prevFoods.length + 1, ...recipe },
-      ];
-      console.log("Saved: ", updatedFoods);
+      const updatedFoods = prevFoods.map((food) =>
+        food.id === parseInt(id) ? { ...food, ...recipe } : food
+      );
+      console.log("Updated: ", updatedFoods);
+      console.log("Updated: ", recipe.title);
       return updatedFoods;
     });
   };
-
-  const handleUpdateRecipeClick = () => {};
 
   return (
     <Box>
