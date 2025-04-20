@@ -11,25 +11,7 @@ const EditRecipe = ({ foods }) => {
       </Link>
 
       <div>
-        <Add
-          showSaveButton={false}
-          showHeader={false}
-          showEditName={true}
-          showUpdateButton={true}
-          showRecipeNameField={false}
-          showRecipeCategory={false}
-          showRecipeDescription={false}
-          showRecipeImage={false}
-          showRecipeIngredient={false}
-          showRecipeDirection={false}
-          showNewRecipeNameField={true}
-          showNewRecipeCategory={true}
-          showNewRecipeDescription={true}
-          showNewRecipeImage={true}
-          showNewRecipeIngredient={true}
-          showNewRecipeDirection={true}
-          foods={foods}
-        />
+        <Add foods={foods} />
       </div>
     </section>
   );
