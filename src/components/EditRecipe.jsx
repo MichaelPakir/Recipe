@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import "../styles/create/create.css";
 import Add from "../pages/Add";
 
-const EditRecipe = ({ foods }) => {
+const EditRecipe = ({ foods, setFoods }) => {
   return (
     <section className="editform__section">
       <Link to="/edit" className="recipe__btn">
@@ -11,7 +11,7 @@ const EditRecipe = ({ foods }) => {
       </Link>
 
       <div>
-        <Add foods={foods} />
+        <Add foods={foods} setFoods={setFoods} />
       </div>
     </section>
   );

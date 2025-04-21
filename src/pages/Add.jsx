@@ -120,7 +120,15 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
     });
   };
 
-  const handleUpdateRecipeClick = () => {};
+  const handleUpdateRecipeClick = () => {
+    setFoods((prevFoods) => {
+      const updatedFoods = prevFoods.map((food) =>
+        food.id === parseInt(id) ? { ...food, ...recipe } : food
+      );
+      console.log("Updated: ", updatedFoods);
+      return updatedFoods;
+    });
+  };
 
   return (
     <Box>
