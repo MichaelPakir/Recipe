@@ -13,11 +13,11 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
   const pathname = location.pathname;
 
   const isEditMode = pathname.startsWith("/edit/recipe/");
-  const id = isEditMode ? pathname.split("/").pop() : null;
+  const id = isEditMode ? pathname.split("/").pop() : "";
 
   const newRecipe = isEditMode
     ? foods.find((food) => food.id === parseInt(id))
-    : null;
+    : "";
 
   const [ingIdCounter, setIngIdCounter] = useState(1);
   const [dirIdCounter, setDirIdCounter] = useState(1);
