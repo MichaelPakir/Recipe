@@ -6,11 +6,19 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Box } from "@mui/material";
-import { useParams } from "react-router";
+import { useLocation } from "react-router-dom";
 
 const Add = ({ fieldStyle, setFoods, foods }) => {
-  const { id } = useParams();
-  const newRecipe = foods.find((food) => food.id === parseInt(id));
+  const location = useLocation();
+  const pathname = location.pathname;
+
+  const isEditMode = pathname.startsWith("/edit/recipe/");
+  const id = isEditMode ? pathname.split("/").pop() : null;
+
+  const newRecipe = isEditMode
+    ? foods.find((food) => food.id === parseInt(id))
+    : null;
+
   const [ingIdCounter, setIngIdCounter] = useState(1);
   const [dirIdCounter, setDirIdCounter] = useState(1);
   const [recipe, setRecipe] = useState({
@@ -25,16 +33,13 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
   const [ingredients, setIngredients] = useState("");
   const [directions, setDirections] = useState("");
 
-  const [isEditMode, setIsEditMode] = useState(false);
-
   useEffect(() => {
-    if (id && newRecipe) {
-      setIsEditMode(true);
+    if (isEditMode && newRecipe) {
       setRecipe(newRecipe);
       setIngIdCounter(newRecipe.ingredients.length + 1);
       setDirIdCounter(newRecipe.directions.length + 1);
     }
-  }, [id, newRecipe]);
+  }, [isEditMode, newRecipe]);
 
   const handleRecipeNameChange = (e) => {
     setRecipe((prevState) => ({
