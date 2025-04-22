@@ -7,6 +7,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Box } from "@mui/material";
 import { useLocation } from "react-router-dom";
+import { Trash2 } from "lucide-react";
 
 const Add = ({ fieldStyle, setFoods, foods }) => {
   const location = useLocation();
@@ -141,7 +142,7 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
         <div className="headers">
           {isEditMode ? (
             <div>
-              <h1>Edit Your Recipe: {recipe.title}</h1>
+              <h1> {recipe.title}</h1>
               <h3>Update your recipe details.</h3>
             </div>
           ) : (
@@ -208,12 +209,15 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
                 value={ingredients}
                 onChange={handleAddIngredientsChange}
               />
+
               <button onClick={handleAddIngredientClick}>Add Ingredient</button>
             </div>
             <div className="freakingJson">
               <ul>
                 {recipe.ingredients.map((ingredient) => (
-                  <li key={ingredient.id}>{ingredient.name}</li>
+                  <li key={ingredient.id}>
+                    {ingredient.name} <Trash2 />
+                  </li>
                 ))}
               </ul>
             </div>
@@ -232,7 +236,9 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
               <div className="freakingJson">
                 <ul>
                   {recipe.directions.map((direction) => (
-                    <li key={direction.id}>{direction.name}</li>
+                    <>
+                      <li key={direction.id}>{direction.name}</li>
+                    </>
                   ))}
                 </ul>
               </div>
