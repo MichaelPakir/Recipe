@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
+import Heart from "react-animated-heart";
 
 const RecipePage = ({ foods }) => {
   const { id } = useParams();
@@ -10,8 +11,11 @@ const RecipePage = ({ foods }) => {
       <Link to="/" className="recipe__btn">
         Go Back
       </Link>
+
       <h1 className="recipe__title">{food.title}</h1>
+
       <img src={food.image} alt={food.title} className="recipe__image" />
+
       <p className="recipe__description">{food.description}</p>
 
       <div className="recipe__info">

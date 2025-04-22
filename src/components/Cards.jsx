@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaHeart } from "react-icons/fa";
 
 const Cards = ({ foods }) => {
   const [filter, setFilter] = useState("all");
@@ -75,6 +76,7 @@ const Cards = ({ foods }) => {
                       src={food.image}
                       alt={food.title}
                     />
+
                     <h3 className="food__title">{food.title}</h3>
                     <p className="food__description">{food.description}</p>
                     <p></p>
