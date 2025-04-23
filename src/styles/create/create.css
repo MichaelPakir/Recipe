@@ -77,3 +77,19 @@
   display: flex;
   flex-direction: column;
 }
+
+.freakingJson {
+  color: black;
+  max-width: 65rem;
+}
+
+.ingredientsList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.deleteIcon {
+  cursor: pointer;
+  color: #d32f2f;
+}

@@ -20,8 +20,6 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
     ? foods.find((food) => food.id === parseInt(id))
     : "";
 
-  const [ingIdCounter, setIngIdCounter] = useState(1);
-  const [dirIdCounter, setDirIdCounter] = useState(1);
   const [recipe, setRecipe] = useState({
     title: "",
     category: "",
@@ -37,8 +35,6 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
   useEffect(() => {
     if (isEditMode && newRecipe) {
       setRecipe(newRecipe);
-      setIngIdCounter(newRecipe.ingredients.length + 1);
-      setDirIdCounter(newRecipe.directions.length + 1);
     }
   }, [isEditMode, newRecipe]);
 
@@ -76,19 +72,32 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
 
   const handleAddIngredientClick = (e) => {
     e.preventDefault();
-    if (ingredients === "") return;
+    if (ingredients.trim() === "") return;
+
+    const latestId = Math.max(0, ...recipe.ingredients.map((i) => i.id));
+    const nextId = latestId + 1;
+
     setRecipe((prevState) => ({
       ...prevState,
       ingredients: [
         ...prevState.ingredients,
         {
-          id: ingIdCounter,
+          id: nextId,
           name: ingredients,
         },
       ],
     }));
-    setIngIdCounter((prev) => prev + 1);
+
     setIngredients("");
+  };
+
+  const handleDeleteIngredients = (ingredientToRemove) => {
+    setRecipe((prev) => ({
+      ...prev,
+      ingredients: prev.ingredients.filter(
+        (ingredient) => ingredient.id !== ingredientToRemove
+      ),
+    }));
   };
 
   const handleReciGuideChange = (e) => {
@@ -97,25 +106,35 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
 
   const handleAddDirectionClick = (e) => {
     e.preventDefault();
-    if (directions === "") return;
+    if (directions.trim() === "") return;
+
+    const latestId = Math.max(0, ...recipe.directions.map((i) => i.id));
+    const nextId = latestId + 1;
+
     setRecipe((prevState) => ({
       ...prevState,
       directions: [
         ...prevState.directions,
         {
-          id: dirIdCounter,
+          id: nextId,
           name: directions,
         },
       ],
     }));
-    setDirIdCounter((prev) => prev + 1);
+
     setDirections("");
   };
 
-  const handleSaveRecipeClick = () => {
-    setIngIdCounter(1);
-    setDirIdCounter(1);
+  const handleDeleteDirections = (directionToRemove) => {
+    setRecipe((prev) => ({
+      ...prev,
+      directions: prev.directions.filter(
+        (direction) => direction.id !== directionToRemove
+      ),
+    }));
+  };
 
+  const handleSaveRecipeClick = () => {
     setFoods((prevFoods) => {
       const updatedFoods = [
         ...prevFoods,
@@ -215,8 +234,12 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
             <div className="freakingJson">
               <ul>
                 {recipe.ingredients.map((ingredient) => (
-                  <li key={ingredient.id}>
-                    {ingredient.name} <Trash2 />
+                  <li key={ingredient.id} className="ingredientsList">
+                    {ingredient.name}
+                    <Trash2
+                      className="deleteIcon"
+                      onClick={() => handleDeleteIngredients(ingredient.id)}
+                    />
                   </li>
                 ))}
               </ul>
@@ -237,7 +260,13 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
                 <ul>
                   {recipe.directions.map((direction) => (
                     <>
-                      <li key={direction.id}>{direction.name}</li>
+                      <li key={direction.id} className="directionsList">
+                        {direction.name}
+                        <Trash2
+                          className="deleteIcon"
+                          onClick={() => handleDeleteDirections(direction.id)}
+                        />
+                      </li>
                     </>
                   ))}
                 </ul>
