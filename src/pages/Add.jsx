@@ -183,7 +183,7 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
             value={recipe.title}
           />
 
-          <FormControl className="recipe__form">
+          <FormControl className="recipe__form" size="small">
             <InputLabel id="recipe__select" className="recipe__select">
               Category
             </InputLabel>
@@ -191,7 +191,6 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
             <Select
               sx={fieldStyle}
               label="Category"
-              size="small"
               onChange={handleReciCatChange}
               value={recipe.category}
             >
