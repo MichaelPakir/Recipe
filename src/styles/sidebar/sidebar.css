@@ -66,3 +66,12 @@
 .show {
   width: var(--sidebar-collapsed-width, 168px);
 }
+
+.editpage__container {
+  display: flex;
+}
+
+.editform__container {
+  flex: 1;
+  padding: 20px;
+}
