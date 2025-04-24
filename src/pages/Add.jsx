@@ -6,10 +6,12 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Box } from "@mui/material";
-import { useLocation } from "react-router-dom";
-import { Trash2 } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Trash2, Delete, X } from "lucide-react";
+import Sidebar from "../components/Sidebar";
 
 const Add = ({ fieldStyle, setFoods, foods }) => {
+  const navigate = useNavigate();
   const location = useLocation();
   const pathname = location.pathname;
 
@@ -143,6 +145,20 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
       console.log("Saved: ", updatedFoods);
       return updatedFoods;
     });
+    setRecipe({
+      title: "",
+      category: "",
+      description: "",
+      image: "",
+      ingredients: [],
+      directions: [],
+    });
+    setIngredients("");
+    setDirections("");
+
+    setTimeout(() => {
+      navigate("/");
+    }, 500);
   };
 
   const handleUpdateRecipeClick = () => {
@@ -150,9 +166,12 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
       const updatedFoods = prevFoods.map((food) =>
         food.id === parseInt(id) ? { ...food, ...recipe } : food
       );
-      console.log("Updated: ", updatedFoods);
       return updatedFoods;
     });
+
+    setTimeout(() => {
+      navigate("/");
+    }, 500);
   };
 
   return (
@@ -175,6 +194,7 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
         <div className="form__container">
           <TextField
             sx={fieldStyle}
+            size="small"
             id="outlined-basic"
             label="Recipe Name"
             variant="outlined"
@@ -182,7 +202,7 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
             value={recipe.title}
           />
 
-          <FormControl className="recipe__form">
+          <FormControl className="recipe__form" size="small">
             <InputLabel id="recipe__select" className="recipe__select">
               Category
             </InputLabel>
@@ -202,8 +222,10 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
 
             <TextField
               sx={fieldStyle}
+              size="small"
               id="outlined-basic"
               label="Description"
+              multiline
               variant="outlined"
               onChange={handleReciDescChange}
               value={recipe.description}
@@ -211,6 +233,8 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
 
             <TextField
               sx={fieldStyle}
+              size="small"
+              multiline
               id="outlined-basic"
               label="Image URL"
               variant="outlined"
@@ -222,6 +246,7 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
               <h4 className="create__headers">Ingredients</h4>
               <TextField
                 sx={fieldStyle}
+                size="small"
                 id="outlined-basic"
                 label="Ingredient"
                 variant="outlined"
@@ -249,6 +274,7 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
               <h4 className="create__headers">Directions</h4>
               <TextField
                 sx={fieldStyle}
+                size="small"
                 id="outlined-basic"
                 label="Direction"
                 variant="outlined"

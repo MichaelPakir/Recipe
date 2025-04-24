@@ -640,6 +640,7 @@ const App = () => {
               <EditRecipe
                 foods={foods}
                 setFoods={setFoods}
+                navLinks={navLinks}
                 fieldStyle={fieldStyle}
               />
             }
