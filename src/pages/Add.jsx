@@ -6,11 +6,12 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Box } from "@mui/material";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Trash2, Delete, X } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 
 const Add = ({ fieldStyle, setFoods, foods }) => {
+  const navigate = useNavigate();
   const location = useLocation();
   const pathname = location.pathname;
 
@@ -144,6 +145,20 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
       console.log("Saved: ", updatedFoods);
       return updatedFoods;
     });
+    setRecipe({
+      title: "",
+      category: "",
+      description: "",
+      image: "",
+      ingredients: [],
+      directions: [],
+    });
+    setIngredients("");
+    setDirections("");
+
+    setTimeout(() => {
+      navigate("/");
+    }, 500);
   };
 
   const handleUpdateRecipeClick = () => {
@@ -153,6 +168,10 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
       );
       return updatedFoods;
     });
+
+    setTimeout(() => {
+      navigate("/");
+    }, 500);
   };
 
   return (

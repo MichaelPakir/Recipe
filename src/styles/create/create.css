@@ -1,95 +1,70 @@
 .recipe__bg {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 2rem;
 }
 
 .headers {
-  gap: 1rem;
-}
-
-.recipe__form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: left;
-  gap: 1rem;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .form__container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   border: 2px solid #2befc5;
-  max-height: 100rem;
-  padding: 5rem;
-  padding-left: 5rem;
-  width: 60rem;
-  border-radius: 30px;
-  background-color: #d5e1df;
-  padding: 3.5rem;
+  border-radius: 20px;
+  background-color: #f4f7f6;
+  padding: 3rem;
+  width: 100%;
+  max-width: 850px;
   gap: 2rem;
+  color: black;
 }
 
-.form__content {
+.recipe__form {
   display: flex;
-  justify-content: center;
-  gap: 5rem;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .recipe__save {
   display: flex;
   justify-content: center;
+  margin-top: 1rem;
 }
 
 .create__headers {
-  color: rgb(40, 36, 36);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
 }
 
-/* EditForm CSS */
-.editform__section {
-  display: flex;
-  flex-direction: column;
-  height: auto;
-}
-.form__upper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 50rem;
+.ingredients__list-container,
+.directions__list-container {
+  margin-top: 1rem;
 }
 
-.form__category {
-  display: flex;
-  width: 50rem;
-  justify-content: center;
-}
-
-.form-recipe__name {
-  width: 50rem;
-}
-
-.form-recipe__category {
-  width: 50rem;
-}
-
-.form__lower {
-  display: flex;
-  flex-direction: column;
-}
-
-.freakingJson {
-  color: black;
-  max-width: 65rem;
-}
-
-.ingredientsList {
+.ingredientsList,
+.directionsList {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0.5rem;
 }
 
 .deleteIcon {
   cursor: pointer;
   color: #d32f2f;
+  transition: transform 0.2s ease;
+}
+
+.deleteIcon:hover {
+  transform: scale(1.1);
 }
