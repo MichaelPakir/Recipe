@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import "../styles/create/create.css";
 import Add from "../pages/Add";
+import Sidebar from "./Sidebar";
 
 const EditRecipe = ({ foods, setFoods }) => {
   return (

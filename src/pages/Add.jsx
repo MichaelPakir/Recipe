@@ -7,7 +7,8 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Box } from "@mui/material";
 import { useLocation } from "react-router-dom";
-import { Trash2 } from "lucide-react";
+import { Trash2, Delete, X } from "lucide-react";
+import Sidebar from "../components/Sidebar";
 
 const Add = ({ fieldStyle, setFoods, foods }) => {
   const location = useLocation();
@@ -150,7 +151,6 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
       const updatedFoods = prevFoods.map((food) =>
         food.id === parseInt(id) ? { ...food, ...recipe } : food
       );
-      console.log("Updated: ", updatedFoods);
       return updatedFoods;
     });
   };
@@ -175,6 +175,7 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
         <div className="form__container">
           <TextField
             sx={fieldStyle}
+            size="small"
             id="outlined-basic"
             label="Recipe Name"
             variant="outlined"
@@ -190,6 +191,7 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
             <Select
               sx={fieldStyle}
               label="Category"
+              size="small"
               onChange={handleReciCatChange}
               value={recipe.category}
             >
@@ -202,8 +204,10 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
 
             <TextField
               sx={fieldStyle}
+              size="small"
               id="outlined-basic"
               label="Description"
+              multiline
               variant="outlined"
               onChange={handleReciDescChange}
               value={recipe.description}
@@ -211,6 +215,8 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
 
             <TextField
               sx={fieldStyle}
+              size="small"
+              multiline
               id="outlined-basic"
               label="Image URL"
               variant="outlined"
@@ -222,6 +228,7 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
               <h4 className="create__headers">Ingredients</h4>
               <TextField
                 sx={fieldStyle}
+                size="small"
                 id="outlined-basic"
                 label="Ingredient"
                 variant="outlined"
@@ -249,6 +256,7 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
               <h4 className="create__headers">Directions</h4>
               <TextField
                 sx={fieldStyle}
+                size="small"
                 id="outlined-basic"
                 label="Direction"
                 variant="outlined"

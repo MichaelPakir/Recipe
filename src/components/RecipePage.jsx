@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import Heart from "react-animated-heart";
+import Sidebar from "./Sidebar";
 
 const RecipePage = ({ foods }) => {
   const { id } = useParams();
