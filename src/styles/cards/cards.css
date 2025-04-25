@@ -89,13 +89,14 @@
 }
 
 .recipe__btn {
+  display: flex;
   cursor: pointer;
   padding: 0.25rem 0.75rem;
   font-weight: 500;
   border-radius: 0.5rem;
   background-color: black;
   border: 0.1rem solid;
-  width: 5rem;
+  width: 4rem;
   left: -100px;
 }
 
