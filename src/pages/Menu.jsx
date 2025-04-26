@@ -8,7 +8,7 @@ const Menu = ({ foods }) => {
       <h3>Discover recipes to spark your culinary creativity!</h3>
 
       <div>
-        <Cards foods={foods} />
+        <Cards foods={foods} fromFavorites={false} />
       </div>
     </div>
   );

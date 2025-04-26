@@ -2,10 +2,12 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import Heart from "react-animated-heart";
 import Sidebar from "./Sidebar";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
-const RecipePage = ({ foods }) => {
+const RecipePage = ({ foods, favorites, toggleFavorite }) => {
   const { id } = useParams();
   const food = foods.find((item) => item.id === parseInt(id));
+  const isFav = favorites.some((item) => item.id === food.id);
 
   return (
     <section className="recipe__container">
@@ -13,7 +15,12 @@ const RecipePage = ({ foods }) => {
         Go Back
       </Link>
 
-      <h1 className="recipe__title">{food.title}</h1>
+      <div>
+        <h1 className="recipe__title">{food.title}</h1>
+        <div onClick={() => toggleFavorite(food)}>
+          {isFav ? <FaHeart /> : <FaRegHeart />}
+        </div>
+      </div>
 
       <img src={food.image} alt={food.title} className="recipe__image" />
 
