@@ -28,6 +28,17 @@ const App = () => {
     { label: "Add", path: "/add" },
   ]);
 
+  const [favorites, setFavorites] = useState([]);
+
+  const toggleFavorite = (food) => {
+    const favor = favorites.find((f) => f.id === food.id);
+    if (favor) {
+      setFavorites(favorites.filter((f) => f.id !== food.id));
+    } else {
+      setFavorites([...favorites, food]);
+    }
+  };
+
   const [foods, setFoods] = useState([
     {
       id: 1,
@@ -615,7 +626,12 @@ const App = () => {
                 element={<RecipePage setFoods={setFoods} foods={foods} />}
               />
             </Route>
-            <Route path="/fav" element={<Fav />} />
+            <Route
+              path="/fav"
+              element={
+                <Fav favorites={favorites} toggleFavorite={toggleFavorite} />
+              }
+            />
             <Route
               path="/add"
               element={
@@ -630,7 +646,14 @@ const App = () => {
             <Route path="/:filter" element={<Cards foods={foods} />} />
             <Route
               path="/recipe/:id"
-              element={<RecipePage foods={foods} setFoods={setFoods} />}
+              element={
+                <RecipePage
+                  foods={foods}
+                  setFoods={setFoods}
+                  favorites={favorites}
+                  toggleFavorite={toggleFavorite}
+                />
+              }
             />
           </Route>
 
