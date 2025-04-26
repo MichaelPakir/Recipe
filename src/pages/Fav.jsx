@@ -11,7 +11,11 @@ const Fav = ({ favorites, toggleFavorite }) => {
         All your beloved creations in one place! <FaHeart />
       </h3>
       <div>
-        <Cardsv3 foods={favorites} toggleFavorite={toggleFavorite} />
+        <Cardsv3
+          foods={favorites}
+          toggleFavorite={toggleFavorite}
+          fromFavorites={true}
+        />
       </div>
     </div>
   );

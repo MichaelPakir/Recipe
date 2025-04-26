@@ -633,6 +633,16 @@ const App = () => {
               }
             />
             <Route
+              path="/fav/recipe/:id"
+              element={
+                <RecipePage
+                  foods={favorites}
+                  toggleFavorite={toggleFavorite}
+                  favorites={favorites}
+                />
+              }
+            />
+            <Route
               path="/add"
               element={
                 <Add

@@ -69,7 +69,14 @@ const Cards = ({ foods }) => {
           {filteredFoods.map((food) => (
             <div key={food.id} className={`food__card mix${food.category}`}>
               <div className="food_img__wrapper">
-                <Link to={`/recipe/${food.id}`} className="food__link">
+                <Link
+                  to={
+                    fromFavorites
+                      ? `/fav/recipe/${food.id}`
+                      : `/recipe/${food.id}`
+                  }
+                  className="food__link"
+                >
                   <div className="food__card">
                     <img
                       className="food__img"
