@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 
-const Cards = ({ foods }) => {
+const Cardsv3 = ({ foods, fromFavorites }) => {
   const [filter, setFilter] = useState("all");
 
   const handleFilterChange = (category) => {
@@ -98,4 +98,4 @@ const Cards = ({ foods }) => {
   );
 };
 
-export default Cards;
+export default Cardsv3;
