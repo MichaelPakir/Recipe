@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../styles/create/create.css";
+// import "../styles/create/create.css";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -10,7 +10,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Trash2, Delete, X } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 
-const Add = ({ fieldStyle, setFoods, foods }) => {
+const Add = ({ setFoods, foods }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const pathname = location.pathname;
@@ -136,7 +136,8 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
     }));
   };
 
-  const handleSaveRecipeClick = () => {
+  const handleSaveRecipeClick = (e) => {
+    e.preventDefault();
     setFoods((prevFoods) => {
       const updatedFoods = [
         ...prevFoods,
@@ -161,7 +162,8 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
     }, 500);
   };
 
-  const handleUpdateRecipeClick = () => {
+  const handleUpdateRecipeClick = (e) => {
+    e.preventDefault();
     setFoods((prevFoods) => {
       const updatedFoods = prevFoods.map((food) =>
         food.id === parseInt(id) ? { ...food, ...recipe } : food
@@ -175,140 +177,164 @@ const Add = ({ fieldStyle, setFoods, foods }) => {
   };
 
   return (
-    <Box>
-      <div className="recipe__bg">
-        <div className="headers">
-          {isEditMode ? (
-            <div>
-              <h1> {recipe.title}</h1>
-              <h3>Update your recipe details.</h3>
+    <Box
+      component="form"
+      sx={{ "& .MuiTextField-root": { m: 1, width: "100%" } }}
+      noValidate
+      autoComplete="off"
+    >
+      <FormControl>
+        <div className="form__section">
+          <div className="form__wrapper">
+            <div className="form__left">
+              <img src="/chef.webp" alt="Chef" className="form__image" />
             </div>
-          ) : (
-            <div>
-              <h1>What's Cooking in Your Mind?</h1>
-              <h3>Add a new recipe to your collection!</h3>
-            </div>
-          )}
-        </div>
 
-        <div className="form__container">
-          <TextField
-            sx={fieldStyle}
-            size="small"
-            id="outlined-basic"
-            label="Recipe Name"
-            variant="outlined"
-            onChange={handleRecipeNameChange}
-            value={recipe.title}
-          />
+            <div className="form__right">
+              <div className="form__header">
+                {isEditMode ? (
+                  <>
+                    <h1>{recipe.title}</h1>
+                    <p>Update your recipe details below</p>
+                  </>
+                ) : (
+                  <>
+                    <h1>What's Cooking in Your Mind?</h1>
+                    <p>Add a new masterpiece to your collection!</p>
+                  </>
+                )}
+              </div>
 
-          <FormControl className="recipe__form" size="small">
-            <InputLabel id="recipe__select" className="recipe__select">
-              Category
-            </InputLabel>
+              <div className="form__fields">
+                <TextField
+                  //   sx={fieldStyle}
+                  //   id="outlined-basic"
+                  label="Recipe Name"
+                  size="small"
+                  variant="outlined"
+                  value={recipe.title}
+                  onChange={handleRecipeNameChange}
+                />
 
-            <Select
-              sx={fieldStyle}
-              label="Category"
-              onChange={handleReciCatChange}
-              value={recipe.category}
-            >
-              <MenuItem value={"desserts"}>Desserts</MenuItem>
-              <MenuItem value={"main-course"}>Main Course</MenuItem>
-              <MenuItem value={"appetizers"}>Appetizers</MenuItem>
-              <MenuItem value={"beverages"}>Beverages</MenuItem>
-              <MenuItem value={"vegetarian"}>Vegetarian</MenuItem>
-            </Select>
+                <FormControl size="small" fullWidth>
+                  <InputLabel>Category</InputLabel>
+                  <Select
+                    // sx={fieldStyle}
+                    label="Category"
+                    value={recipe.category}
+                    onChange={handleReciCatChange}
+                  >
+                    <MenuItem value={"desserts"}>Desserts</MenuItem>
+                    <MenuItem value={"main-course"}>Main Course</MenuItem>
+                    <MenuItem value={"appetizers"}>Appetizers</MenuItem>
+                    <MenuItem value={"beverages"}>Beverages</MenuItem>
+                    <MenuItem value={"vegetarian"}>Vegetarian</MenuItem>
+                  </Select>
+                </FormControl>
 
-            <TextField
-              sx={fieldStyle}
-              size="small"
-              id="outlined-basic"
-              label="Description"
-              multiline
-              variant="outlined"
-              onChange={handleReciDescChange}
-              value={recipe.description}
-            />
+                <TextField
+                  // sx={fieldStyle}
+                  label="Description"
+                  size="small"
+                  multiline
+                  rows={4}
+                  variant="outlined"
+                  value={recipe.description}
+                  onChange={handleReciDescChange}
+                />
 
-            <TextField
-              sx={fieldStyle}
-              size="small"
-              multiline
-              id="outlined-basic"
-              label="Image URL"
-              variant="outlined"
-              onChange={handleReciUrlChange}
-              value={recipe.image}
-            />
+                <TextField
+                  //   sx={fieldStyle}
+                  label="Image URL"
+                  size="small"
+                  multiline
+                  variant="outlined"
+                  value={recipe.image}
+                  onChange={handleReciUrlChange}
+                />
 
-            <div>
-              <h4 className="create__headers">Ingredients</h4>
-              <TextField
-                sx={fieldStyle}
-                size="small"
-                id="outlined-basic"
-                label="Ingredient"
-                variant="outlined"
-                value={ingredients}
-                onChange={handleAddIngredientsChange}
-              />
-
-              <button onClick={handleAddIngredientClick}>Add Ingredient</button>
-            </div>
-            <div className="freakingJson">
-              <ul>
-                {recipe.ingredients.map((ingredient) => (
-                  <li key={ingredient.id} className="ingredientsList">
-                    {ingredient.name}
-                    <Trash2
-                      className="deleteIcon"
-                      onClick={() => handleDeleteIngredients(ingredient.id)}
+                <div className="section">
+                  <h3>Ingredients</h3>
+                  <div className="input-group">
+                    <TextField
+                      // sx={fieldStyle}
+                      label="Ingredient"
+                      size="small"
+                      variant="outlined"
+                      value={ingredients}
+                      onChange={handleAddIngredientsChange}
                     />
-                  </li>
-                ))}
-              </ul>
-            </div>
 
-            <div>
-              <h4 className="create__headers">Directions</h4>
-              <TextField
-                sx={fieldStyle}
-                size="small"
-                id="outlined-basic"
-                label="Direction"
-                variant="outlined"
-                value={directions}
-                onChange={handleReciGuideChange}
-              />
-              <button onClick={handleAddDirectionClick}>Add Direction</button>
-              <div className="freakingJson">
-                <ul>
-                  {recipe.directions.map((direction) => (
-                    <>
-                      <li key={direction.id} className="directionsList">
-                        {direction.name}
+                    <button
+                      className="add-btn"
+                      onClick={handleAddIngredientClick}
+                    >
+                      Add
+                    </button>
+                  </div>
+
+                  <ul className="list">
+                    {recipe.ingredients.map((ingredient) => (
+                      <li key={ingredient.id}>
+                        {ingredient.name}
                         <Trash2
                           className="deleteIcon"
-                          onClick={() => handleDeleteDirections(direction.id)}
+                          onClick={() => handleDeleteIngredients(ingredient.id)}
                         />
                       </li>
-                    </>
-                  ))}
-                </ul>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="section">
+                  <h3>Directions</h3>
+                  <div className="input-group">
+                    <TextField
+                      // sx={fieldStyle}
+                      label="Direction"
+                      variant="outlined"
+                      size="small"
+                      value={directions}
+                      onChange={handleReciGuideChange}
+                    />
+
+                    <button
+                      className="add-btn"
+                      onClick={handleAddDirectionClick}
+                    >
+                      Add
+                    </button>
+                  </div>
+
+                  <ul className="list">
+                    {recipe.directions.map((direction) => (
+                      <li key={direction.id}>
+                        {direction.name}
+                        <div className="delete__container">
+                          <Trash2
+                            className="deleteIcon"
+                            onClick={() => handleDeleteDirections(direction.id)}
+                          />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="submit-btn">
+                  {isEditMode ? (
+                    <button onClick={handleUpdateRecipeClick}>
+                      Update Recipe
+                    </button>
+                  ) : (
+                    <button onClick={handleSaveRecipeClick}>Save Recipe</button>
+                  )}
+                </div>
               </div>
             </div>
-
-            <div className="recipe__save">
-              {isEditMode ? (
-                <button onClick={handleUpdateRecipeClick}>Update</button>
-              ) : (
-                <button onClick={handleSaveRecipeClick}>Save</button>
-              )}
-            </div>
-          </FormControl>
+          </div>
         </div>
-      </div>
+      </FormControl>
     </Box>
   );
 };

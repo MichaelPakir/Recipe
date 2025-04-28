@@ -14,9 +14,6 @@ const EditRecipe = ({ foods, setFoods, navLinks }) => {
           <Link to="/edit" className="recipe__btn">
             Go Back
           </Link>
-
-          <FaHeart size={"2em"} />
-          <FaRegHeart size={"2em"} />
         </div>
 
         <div>

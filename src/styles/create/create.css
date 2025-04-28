@@ -1,70 +1,163 @@
-.recipe__bg {
+.form__section {
+  padding-left: 10rem;
+}
+
+.form__wrapper {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
+  min-height: 100vh;
+  background: #f9fafb;
+  border-radius: 35px;
 }
 
-.headers {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.form__container {
-  display: flex;
-  flex-direction: column;
-  border: 2px solid #2befc5;
-  border-radius: 20px;
-  background-color: #f4f7f6;
-  padding: 3rem;
-  width: 100%;
-  max-width: 850px;
-  gap: 2rem;
-  color: black;
-}
-
-.recipe__form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.recipe__save {
+.form__left {
+  flex: 1;
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
+  align-items: center;
+  background: linear-gradient(135deg, #576ca8 0%, #fad0c4 100%);
+  background-size: 300% 300%;
+  animation: gradientMove 6s ease infinite;
+  transition: background-color 0.3s ease-in-out;
+  padding: 2rem;
+  border-radius: 35px 0 0 30px;
 }
 
-.create__headers {
-  font-size: 1.2rem;
-  font-weight: 600;
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.form__image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.form__right {
+  flex: 2;
+  padding: 4rem;
+  background: white;
+  border-radius: 0 2rem 2rem 0;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form__header h1 {
+  font-size: 2.5rem;
   color: #333;
   margin-bottom: 0.5rem;
 }
 
-.ingredients__list-container,
-.directions__list-container {
+.form__header p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.form__fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.section {
+  grid-column: span 2;
+}
+
+.input-group {
+  display: flex;
+  gap: 1rem;
   margin-top: 1rem;
 }
 
-.ingredientsList,
-.directionsList {
+.add-btn {
+  padding: 0.5rem 1.5rem;
+  background-color: #00c896;
+  border: none;
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+  background-color: #00b386;
+}
+
+.list {
+  margin-top: 1rem;
+}
+
+.list li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 1rem;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background: #f0f0f0;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
   margin-bottom: 0.5rem;
+  color: black;
 }
 
 .deleteIcon {
   cursor: pointer;
-  color: #d32f2f;
-  transition: transform 0.2s ease;
+  color: #e63946;
+
+  transition: transform 0.3s ease;
+}
+
+.delete__container {
+  width: 100px;
 }
 
 .deleteIcon:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
+}
+
+.submit-btn {
+  grid-column: span 2;
+  display: flex;
+  justify-content: center;
+}
+
+.submit-btn button {
+  padding: 1rem 3rem;
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn button:hover {
+  background-color: #ff5252;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .form__wrapper {
+    flex-direction: column;
+  }
+
+  .form__fields {
+    grid-template-columns: 1fr;
+  }
+
+  .form__right {
+    border-radius: 0 0 2rem 2rem;
+    padding: 2rem;
+  }
 }
