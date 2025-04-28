@@ -1,22 +1,22 @@
 .food__container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  padding-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem 3rem;
+  justify-content: center;
+  padding-top: 2rem;
 }
 
 .flex {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
+  justify-content: flex-start;
   gap: 20px;
 }
 
 .wrap {
-  display: flex;
+  display: contents;
   flex-direction: row;
   flex-wrap: wrap;
-  padding-left: 175px;
   justify-content: flex-start;
   align-items: stretch;
 }
@@ -121,4 +121,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .food__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .food__container {
+    grid-template-columns: 1fr;
+  }
 }
