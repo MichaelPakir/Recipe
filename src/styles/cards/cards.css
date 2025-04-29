@@ -60,6 +60,7 @@
   font-weight: 500;
   border-radius: 0.5rem;
   margin: 0 10px;
+  border: 1px solid #2befc5;
 }
 
 .food__item.active__work {
