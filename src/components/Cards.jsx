@@ -36,6 +36,7 @@ const Cards = ({ foods }) => {
           }`}
           onClick={() => handleFilterChange("main-course")}
         >
+          <img src="/main.webp" className="filterImages" />
           Main Course
         </span>
         <span
@@ -44,6 +45,7 @@ const Cards = ({ foods }) => {
           }`}
           onClick={() => handleFilterChange("appetizers")}
         >
+          <img src="/appetizers.webp" className="filterImages" />
           Appetizers
         </span>
         <span
@@ -52,7 +54,7 @@ const Cards = ({ foods }) => {
           }`}
           onClick={() => handleFilterChange("beverages")}
         >
-          Beverages
+          <img src="/beverages.webp" className="filterImages" /> Beverages
         </span>
         <span
           className={`food__item ${
@@ -60,7 +62,7 @@ const Cards = ({ foods }) => {
           }`}
           onClick={() => handleFilterChange("vegetarian")}
         >
-          Vegetarian
+          <img src="/vegetarian.webp" className="filterImages" /> Vegetarian
         </span>
       </div>
 

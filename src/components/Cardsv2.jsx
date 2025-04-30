@@ -14,7 +14,7 @@ const Cardsv2 = ({ foods }) => {
 
   return (
     <section>
-      <div className="">
+      <div className="filter__container">
         <span
           className={`food__item ${filter === "all" ? "active__work" : ""}`}
           onClick={() => handleFilterChange("all")}
@@ -23,11 +23,11 @@ const Cardsv2 = ({ foods }) => {
         </span>
         <span
           className={`food__item ${
-            filter === "desserts" ? "active__work" : ""
+            filter === `desserts` ? "active__work" : ""
           }`}
           onClick={() => handleFilterChange("desserts")}
         >
-          Desserts
+          <img src="/desserts.webp" className="filterImages" /> Desserts
         </span>
         <span
           className={`food__item ${
@@ -35,6 +35,7 @@ const Cardsv2 = ({ foods }) => {
           }`}
           onClick={() => handleFilterChange("main-course")}
         >
+          <img src="/main.webp" className="filterImages" />
           Main Course
         </span>
         <span
@@ -43,6 +44,7 @@ const Cardsv2 = ({ foods }) => {
           }`}
           onClick={() => handleFilterChange("appetizers")}
         >
+          <img src="/appetizers.webp" className="filterImages" />
           Appetizers
         </span>
         <span
@@ -51,7 +53,7 @@ const Cardsv2 = ({ foods }) => {
           }`}
           onClick={() => handleFilterChange("beverages")}
         >
-          Beverages
+          <img src="/beverages.webp" className="filterImages" /> Beverages
         </span>
         <span
           className={`food__item ${
@@ -59,7 +61,7 @@ const Cardsv2 = ({ foods }) => {
           }`}
           onClick={() => handleFilterChange("vegetarian")}
         >
-          Vegetarian
+          <img src="/vegetarian.webp" className="filterImages" /> Vegetarian
         </span>
       </div>
 
