@@ -15,7 +15,7 @@ const Cards = ({ foods }) => {
 
   return (
     <section>
-      <div className="">
+      <div className="filter__container">
         <span
           className={`food__item ${filter === "all" ? "active__work" : ""}`}
           onClick={() => handleFilterChange("all")}
@@ -24,11 +24,11 @@ const Cards = ({ foods }) => {
         </span>
         <span
           className={`food__item ${
-            filter === "desserts" ? "active__work" : ""
+            filter === `desserts` ? "active__work" : ""
           }`}
           onClick={() => handleFilterChange("desserts")}
         >
-          Desserts
+          <img src="/desserts.webp" className="filterImages" /> Desserts
         </span>
         <span
           className={`food__item ${
