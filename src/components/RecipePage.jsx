@@ -15,11 +15,12 @@ const RecipePage = ({ foods, favorites, toggleFavorite }) => {
         Go Back
       </Link>
 
+      <div onClick={() => toggleFavorite(food)}>
+        {isFav ? <FaHeart size={35} color="red" /> : <FaRegHeart size={35} />}
+      </div>
+
       <div>
         <h1 className="recipe__title">{food.title}</h1>
-        <div onClick={() => toggleFavorite(food)}>
-          {isFav ? <FaHeart /> : <FaRegHeart />}
-        </div>
       </div>
 
       <img src={food.image} alt={food.title} className="recipe__image" />

@@ -10,7 +10,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Trash2, Delete, X } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 
-const Add = ({ setFoods, foods }) => {
+const Add = ({ setFoods, foods, fieldStyle }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const pathname = location.pathname;
@@ -207,7 +207,7 @@ const Add = ({ setFoods, foods }) => {
 
               <div className="form__fields">
                 <TextField
-                  //   sx={fieldStyle}
+                  sx={fieldStyle}
                   //   id="outlined-basic"
                   label="Recipe Name"
                   size="small"
@@ -217,9 +217,10 @@ const Add = ({ setFoods, foods }) => {
                 />
 
                 <FormControl size="small" fullWidth>
-                  <InputLabel>Category</InputLabel>
+                  <InputLabel className="category__field">Category</InputLabel>
                   <Select
-                    // sx={fieldStyle}
+                    className="category__field"
+                    sx={fieldStyle}
                     label="Category"
                     value={recipe.category}
                     onChange={handleReciCatChange}
@@ -233,7 +234,7 @@ const Add = ({ setFoods, foods }) => {
                 </FormControl>
 
                 <TextField
-                  // sx={fieldStyle}
+                  sx={fieldStyle}
                   label="Description"
                   size="small"
                   multiline
@@ -244,7 +245,7 @@ const Add = ({ setFoods, foods }) => {
                 />
 
                 <TextField
-                  //   sx={fieldStyle}
+                  sx={fieldStyle}
                   label="Image URL"
                   size="small"
                   multiline
@@ -257,7 +258,7 @@ const Add = ({ setFoods, foods }) => {
                   <h3>Ingredients</h3>
                   <div className="input-group">
                     <TextField
-                      // sx={fieldStyle}
+                      sx={fieldStyle}
                       label="Ingredient"
                       size="small"
                       variant="outlined"
@@ -290,7 +291,7 @@ const Add = ({ setFoods, foods }) => {
                   <h3>Directions</h3>
                   <div className="input-group">
                     <TextField
-                      // sx={fieldStyle}
+                      sx={fieldStyle}
                       label="Direction"
                       variant="outlined"
                       size="small"

@@ -55,21 +55,27 @@
 }
 
 .food__item {
+  display: flex;
   align-items: center;
   cursor: pointer;
-  align-items: center;
-  padding: 0.75rem 0.75rem;
+  padding: 1rem 1rem;
   font-weight: 500;
   border-radius: 1.25rem;
-  margin: 0 10px;
-  border: 1px solid #2befc5;
+  margin: 10px;
+  border: 2px solid #268d73;
+}
+
+.filter__container {
+  display: flex;
+
+  justify-content: center;
+  flex-direction: row;
+  height: 3.5rem;
 }
 
 .filterImages {
-  text-align: center;
-  margin-right: 8px;
-  justify-content: stretch;
   width: 25px;
+  height: 35px;
 }
 
 .food__item.active__work {

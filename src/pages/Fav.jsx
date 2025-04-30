@@ -7,9 +7,7 @@ const Fav = ({ favorites, toggleFavorite }) => {
   return (
     <div>
       <h1>Your Favorite Recipes</h1>
-      <h3>
-        All your beloved creations in one place! <FaHeart />
-      </h3>
+      <h3>All your beloved creations in one place!</h3>
       <div>
         <Cardsv3
           foods={favorites}
