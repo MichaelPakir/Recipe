@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/sidebar/sidebar.css";
+import { Divide as Hamburger } from "hamburger-react";
 
 const Sidebar = ({ navLinks }) => {
   const [activeLink, setActiveLink] = useState("");
@@ -19,6 +20,9 @@ const Sidebar = ({ navLinks }) => {
               alt="Recipe Logo"
               className="sidebar__logo-icon"
             />
+            <div>
+              <Hamburger Divide />
+            </div>
           </a>
 
           <div className="nav__container">
