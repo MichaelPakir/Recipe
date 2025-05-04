@@ -22,7 +22,7 @@ const fieldStyle = {
 
 const App = () => {
   const [navLinks] = useState([
-    { label: "Menu", path: "/" },
+    { label: "Menu", path: "/menu" },
     { label: "Edit", path: "/edit" },
     { label: "Favorites", path: "/fav" },
     { label: "Add", path: "/add" },
@@ -31,9 +31,9 @@ const App = () => {
   const [favorites, setFavorites] = useState([]);
 
   const toggleFavorite = (food) => {
-    const favor = favorites.find((f) => f.id === food.id);
+    const favor = favorites.find((fav) => fav.id === food.id);
     if (favor) {
-      setFavorites(favorites.filter((f) => f.id !== food.id));
+      setFavorites(favorites.filter((fav) => fav.id !== food.id));
     } else {
       setFavorites([...favorites, food]);
     }
@@ -619,7 +619,7 @@ const App = () => {
         <Routes>
           <Route element={<MainLayout navLinks={navLinks} />}>
             <Route index element={<Menu foods={foods} />} />
-            <Route path="/" element={<Menu foods={foods} />} />
+            <Route path="/menu" element={<Menu foods={foods} />} />
             <Route path="/edit" element={<Edit foods={foods} />}>
               <Route
                 path=":id"

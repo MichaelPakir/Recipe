@@ -11,7 +11,7 @@ const RecipePage = ({ foods, favorites, toggleFavorite }) => {
 
   return (
     <section className="recipe__container">
-      <Link to="/" className="recipe__btn">
+      <Link to="/menu" className="recipe__btn">
         Go Back
       </Link>
 
