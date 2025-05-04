@@ -1,48 +1,12 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "../styles/sidebar/sidebar.css";
-import { Divide as Hamburger } from "hamburger-react";
+import React from "react";
+import SidebarMobile from "./SidebarMobile";
+import SidebarWeb from "./SidebarWeb";
 
 const Sidebar = ({ navLinks }) => {
-  const [activeLink, setActiveLink] = useState("");
-
-  const handleLinkClick = (label) => {
-    setActiveLink(label);
-  };
-
   return (
-    <div className="sidebar">
-      <nav className="sidebar__nav">
-        <div>
-          <a href="/" className="sidebar__logo">
-            <img
-              src="/logo.png"
-              alt="Recipe Logo"
-              className="sidebar__logo-icon"
-            />
-            <div>
-              <Hamburger Divide />
-            </div>
-          </a>
-
-          <div className="nav__container">
-            {navLinks.map((link, index) => (
-              <div className="nav__item" key={index}>
-                <Link
-                  to={link.path}
-                  className={`nav__link ${
-                    activeLink === link.label ? "active__work" : ""
-                  }`}
-                  onClick={() => handleLinkClick(link.label)}
-                >
-                  <span className="nav__icon">{link.icon}</span>
-                  <span className="nav__text">{link.label}</span>
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </nav>
+    <div>
+      <SidebarWeb navLinks={navLinks} />
+      <SidebarMobile navLinks={navLinks} />
     </div>
   );
 };

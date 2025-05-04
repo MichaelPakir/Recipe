@@ -15,7 +15,7 @@ const Add = ({ setFoods, foods, fieldStyle }) => {
   const location = useLocation();
   const pathname = location.pathname;
 
-  const isEditMode = pathname.startsWith("/edit/recipe/");
+  const isEditMode = pathname.startsWith("/edit/recipe");
   const id = isEditMode ? pathname.split("/").pop() : "";
 
   const newRecipe = isEditMode
