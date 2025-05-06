@@ -23,46 +23,48 @@ const Cards = ({ foods }) => {
           All
         </span>
         <span
-          className={`food__item ${
+          className={`food__item nav ${
             filter === `desserts` ? "active__work" : ""
           }`}
           onClick={() => handleFilterChange("desserts")}
         >
-          <img src="/desserts.webp" className="filterImages" /> Desserts
+          <img src="/desserts.webp" className="filterImages" /> <p>Desserts</p>
         </span>
         <span
-          className={`food__item ${
+          className={`food__item nav ${
             filter === "main-course" ? "active__work" : ""
           }`}
           onClick={() => handleFilterChange("main-course")}
         >
           <img src="/main.webp" className="filterImages" />
-          Main Course
+          <p>Main Course</p>
         </span>
         <span
-          className={`food__item ${
+          className={`food__item nav ${
             filter === "appetizers" ? "active__work" : ""
           }`}
           onClick={() => handleFilterChange("appetizers")}
         >
           <img src="/appetizers.webp" className="filterImages" />
-          Appetizers
+          <p>Appetizers</p>
         </span>
         <span
-          className={`food__item ${
+          className={`food__item nav ${
             filter === "beverages" ? "active__work" : ""
           }`}
           onClick={() => handleFilterChange("beverages")}
         >
-          <img src="/beverages.webp" className="filterImages" /> Beverages
+          <img src="/beverages.webp" className="filterImages" />{" "}
+          <p>Beverages</p>
         </span>
         <span
-          className={`food__item ${
+          className={`food__item nav ${
             filter === "vegetarian" ? "active__work" : ""
           }`}
           onClick={() => handleFilterChange("vegetarian")}
         >
-          <img src="/vegetarian.webp" className="filterImages" /> Vegetarian
+          <img src="/vegetarian.webp" className="filterImages" />{" "}
+          <p>Vegetarian</p>
         </span>
       </div>
 

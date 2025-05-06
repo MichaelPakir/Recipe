@@ -59,7 +59,7 @@
   }
 }
 
-@media screen and (max-width: 1099px) {
+@media screen and (max-width: 1100px) {
   .sidebar--web {
     display: none;
   }
@@ -79,7 +79,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 30%;
   height: 100vh;
   backdrop-filter: blur(10px);
   background-color: rgba(18, 25, 44, 0.8);
@@ -104,5 +104,15 @@
 
   .burger__icon {
     display: none;
+  }
+
+  .form__left {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 987px) {
+  .mobile__overlay {
+    height: 100%;
   }
 }
