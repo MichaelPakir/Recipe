@@ -28,12 +28,6 @@
   }
 }
 
-@media screen and (min-width: 1099px) {
-  .form__right {
-    border-radius: 0 35px 35px 0;
-  }
-}
-
 @keyframes gradientMove {
   0% {
     background-position: 0% 50%;
@@ -186,5 +180,11 @@
   .form__right {
     border-radius: 0 0 2rem 2rem;
     padding: 2rem;
+  }
+}
+
+@media screen and (min-width: 1101px) {
+  .form__right {
+    border-radius: 0 35px 35px 0;
   }
 }
