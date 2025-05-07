@@ -11,7 +11,7 @@ const SidebarWeb = ({ navLinks }) => {
           <h2>LOGO</h2>
         </a>
 
-        <div className="nav__container">
+        <div>
           {navLinks.map((link, index) => (
             <Link key={index} to={link.path} className="nav__link">
               <span className="nav__text">{link.label}</span>
