@@ -83,7 +83,6 @@ const Cards = ({ foods }) => {
 
                     <h3 className="food__title">{food.title}</h3>
                     <p className="food__description">{food.description}</p>
-                    <p></p>
                   </div>
                 </Link>
               </div>
