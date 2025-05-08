@@ -40,8 +40,23 @@
   border-radius: 1rem;
   justify-self: center;
   text-align: center;
-
   border: 1px solid rgb(58, 83, 83);
+}
+
+@media (max-width: 768px) {
+  .food__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .food__container {
+    grid-template-columns: 1fr;
+  }
+
+  .food__card {
+    max-width: 20rem;
+  }
 }
 
 .food__img {
@@ -67,10 +82,23 @@
 
 .filter__container {
   display: flex;
-
   justify-content: center;
   flex-direction: row;
   height: 3.5rem;
+}
+
+@media screen and (max-width: 1099px) {
+  .nav p {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1099px) {
+  .food__item {
+    height: 1.5rem;
+
+    padding: 0.75rem 0.75rem;
+  }
 }
 
 .filterImages {
@@ -131,22 +159,4 @@
 
 .recipe__select {
   color: red;
-}
-
-.btn__container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-@media (max-width: 768px) {
-  .food__container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .food__container {
-    grid-template-columns: 1fr;
-  }
 }
