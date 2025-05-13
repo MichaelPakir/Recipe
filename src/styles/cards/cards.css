@@ -160,3 +160,22 @@
 .recipe__select {
   color: red;
 }
+
+@media screen and (max-width: 360px) {
+  .addToHeart {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 3.5rem;
+  }
+
+  .heading {
+    display: flex;
+    margin-right: 50rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .recipe__btn {
+    display: none;
+  }
+}

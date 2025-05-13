@@ -42,7 +42,7 @@ const App = () => {
   const [foods, setFoods] = useState([
     {
       id: 1,
-      title: "Sinigang na Baka",
+      title: "Sinigang na Baboy",
       description:
         "Simple beef, vegetable, tamarind based soup that we eat over rice! A meal in itself!",
       category: "main-course",
