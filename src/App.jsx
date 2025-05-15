@@ -9,6 +9,10 @@ import Add from "./pages/Add.jsx";
 import Cards from "./components/Cards.jsx";
 import RecipePage from "./components/RecipePage.jsx";
 import EditRecipe from "./components/EditRecipe";
+import { MdRestaurantMenu } from "react-icons/md";
+import { FaRegEdit } from "react-icons/fa";
+import { BsFillBookmarkHeartFill } from "react-icons/bs";
+import { IoMdAddCircleOutline } from "react-icons/io";
 
 const fieldStyle = {
   ".MuiInputLabel-root": {
@@ -22,10 +26,14 @@ const fieldStyle = {
 
 const App = () => {
   const [navLinks] = useState([
-    { label: "Menu", path: "/menu" },
-    { label: "Edit", path: "/edit" },
-    { label: "Favorites", path: "/fav" },
-    { label: "Add", path: "/add" },
+    { label: "Menu", path: "/menu", icon: <MdRestaurantMenu size={24} /> },
+    { label: "Edit", path: "/edit", icon: <FaRegEdit size={24} /> },
+    {
+      label: "Favorites",
+      path: "/fav",
+      icon: <BsFillBookmarkHeartFill size={24} />,
+    },
+    { label: "Add", path: "/add", icon: <IoMdAddCircleOutline size={24} /> },
   ]);
 
   const [favorites, setFavorites] = useState([]);
