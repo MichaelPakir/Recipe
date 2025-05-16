@@ -11,19 +11,17 @@ const RecipePage = ({ foods, favorites, toggleFavorite }) => {
 
   return (
     <section className="recipe__container">
-      <Link to="/menu" className="recipe__btn">
-        Go Back
-      </Link>
-
-      <div onClick={() => toggleFavorite(food)}>
+      <div className="addToHeart" onClick={() => toggleFavorite(food)}>
         {isFav ? <FaHeart size={35} color="red" /> : <FaRegHeart size={35} />}
       </div>
 
-      <div>
+      <div className="heading">
         <h1 className="recipe__title">{food.title}</h1>
       </div>
 
-      <img src={food.image} alt={food.title} className="recipe__image" />
+      <div className="mobileImage">
+        <img src={food.image} alt={food.title} className="recipe__image" />
+      </div>
 
       <p className="recipe__description">{food.description}</p>
 

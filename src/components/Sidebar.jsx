@@ -4,7 +4,7 @@ import SidebarWeb from "./SidebarWeb";
 
 const Sidebar = ({ navLinks }) => {
   return (
-    <div>
+    <div className="sidebar__box">
       <SidebarWeb navLinks={navLinks} />
       <SidebarMobile navLinks={navLinks} />
     </div>
