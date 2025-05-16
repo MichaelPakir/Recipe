@@ -2,19 +2,25 @@ import React, { useState } from "react";
 import { Divide as Hamburger } from "hamburger-react";
 import { Link } from "react-router-dom";
 import "../styles/sidebar/sidebar.css";
+import { IoMenu } from "react-icons/io5";
 
 const SidebarMobile = ({ navLinks }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [collapsed, setCollapsed] = useState(false);
 
   return (
     <div className="sidebar--mobile">
       <div className="burger__icon">
-        <Hamburger
-          size={24}
+        {/* <Hamburger
+          className="hamburger-react"
+          size={32}
           toggled={isOpen}
           toggle={setIsOpen}
           onClick={() => setCollapsed(!collapsed)}
+        /> */}
+        <IoMenu
+          className="hamburger-react"
+          size={32}
+          onClick={() => setIsOpen(!isOpen)}
         />
       </div>
 

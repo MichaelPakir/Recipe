@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Divide as Hamburger } from "hamburger-react";
 import "../styles/sidebar/sidebar.css";
+import { IoMenu } from "react-icons/io5";
+import Hamburger from "hamburger-react";
 
 const SidebarWeb = ({ navLinks }) => {
   const [collapsed, setCollapsed] = useState(false);
@@ -13,7 +14,8 @@ const SidebarWeb = ({ navLinks }) => {
           className="burger__toggle"
           onClick={() => setCollapsed(!collapsed)}
         >
-          <Hamburger size={24} />
+          <Hamburger className="burger_react__blue" size={24} />
+          {/* <IoMenu className="burger_react__blue" size={24} />  */}
         </button>
         {!collapsed && <h2 className="sidebar__logo">LOGO</h2>}
       </div>

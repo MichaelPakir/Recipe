@@ -11,12 +11,6 @@ const RecipePage = ({ foods, favorites, toggleFavorite }) => {
 
   return (
     <section className="recipe__container">
-      <div className="recipe-btn__container">
-        <Link to="/menu" className="recipe__btn">
-          Go Back
-        </Link>
-      </div>
-
       <div className="addToHeart" onClick={() => toggleFavorite(food)}>
         {isFav ? <FaHeart size={35} color="red" /> : <FaRegHeart size={35} />}
       </div>
