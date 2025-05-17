@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaHeart } from "react-icons/fa";
 
 const Cards = ({ foods }) => {
   const [filter, setFilter] = useState("all");
