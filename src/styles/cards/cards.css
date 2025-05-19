@@ -94,7 +94,6 @@
 
   .food__item {
     height: 1.5rem;
-
     padding: 0.75rem 0.75rem;
   }
 }
@@ -174,9 +173,20 @@
     padding-left: 3.5rem;
   }
 
+  .recipe__container {
+    width: 20rem;
+  }
+
   .heading {
     display: flex;
-    margin-right: 50rem;
+  }
+
+  .mobileImage {
+    width: 15rem;
+  }
+
+  .recipe__image {
+    width: 23rem;
   }
 }
 
@@ -189,7 +199,7 @@
   }
 
   .recipe__title {
-    padding-left: 10rem;
+    padding-left: 5.5rem;
   }
 
   .mobileImage {
@@ -198,24 +208,24 @@
 
   .addToHeart {
     width: 25rem;
-    padding-left: 3.5rem;
+    padding-left: 25rem;
   }
 
   .recipe__image {
     display: flex;
-    width: 25rem;
+    /* width: 25rem; */
     height: 17.5rem;
     border-radius: 3rem;
   }
 
   .recipe__description {
     padding-left: 5rem;
-    width: 25rem;
+    width: 22.5rem;
   }
 
   .recipe__info {
     padding-left: 5rem;
-    width: 25rem;
+    width: 22.5rem;
   }
 
   .recipe-btn__container {
@@ -227,10 +237,10 @@
 }
 
 @media screen and (max-width: 1246px) {
-  .mobileImage {
+  /* .mobileImage {
     width: 50rem;
     padding-left: 10rem;
-  }
+  } */
 
   .heading {
     padding-left: 2.5rem;

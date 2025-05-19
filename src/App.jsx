@@ -18,7 +18,6 @@ const fieldStyle = {
   ".MuiInputLabel-root": {
     color: "grey",
   },
-
   fieldset: {
     border: "1px solid #484f4f",
   },

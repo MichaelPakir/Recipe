@@ -7,16 +7,10 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 const EditRecipe = ({ foods, setFoods, navLinks }) => {
   return (
-    <div className="editpage__container">
+    <div className="editpage__container edit">
       <Sidebar navLinks={navLinks} />
-      <section className="editform__section">
-        <div className="btn__container">
-          <Link to="/edit" className="recipe__btn">
-            Go Back
-          </Link>
-        </div>
-
-        <div>
+      <section className="editform__section eform">
+        <div className="edit__container">
           <Add foods={foods} setFoods={setFoods} />
         </div>
       </section>

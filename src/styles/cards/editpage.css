@@ -1,0 +1,31 @@
+.editpage__container {
+  display: flex;
+  width: 73.5rem;
+  padding-left: 7rem;
+}
+
+.editform__section {
+  display: flex;
+}
+
+@media (max-width: 360px) {
+  .edit {
+    width: 60rem;
+  }
+
+  .editpage__container {
+    padding-left: 1rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  .editpage__container {
+    padding-left: 1rem;
+  }
+}
+
+@media (min-width: 360px) {
+  /* .edit {
+    width: 25rem;
+  } */
+}
