@@ -184,8 +184,8 @@ const Add = ({ setFoods, foods, fieldStyle }) => {
       autoComplete="off"
     >
       <FormControl>
-        <div className="form__section">
-          <div className="form__wrapper">
+        <div className="form__section create">
+          <div className="form__wrapper editWrapper">
             <div className="form__left">
               <img src="/chef.webp" alt="Chef" className="form__image" />
             </div>
@@ -208,7 +208,6 @@ const Add = ({ setFoods, foods, fieldStyle }) => {
               <div className="form__fields">
                 <TextField
                   sx={fieldStyle}
-                  //   id="outlined-basic"
                   label="Recipe Name"
                   size="small"
                   variant="outlined"
@@ -233,26 +232,28 @@ const Add = ({ setFoods, foods, fieldStyle }) => {
                   </Select>
                 </FormControl>
 
-                <TextField
-                  sx={fieldStyle}
-                  label="Description"
-                  size="small"
-                  multiline
-                  rows={4}
-                  variant="outlined"
-                  value={recipe.description}
-                  onChange={handleReciDescChange}
-                />
+                <div className="fieldtrip">
+                  <TextField
+                    sx={fieldStyle}
+                    label="Image URL"
+                    size="small"
+                    multiline
+                    variant="outlined"
+                    value={recipe.image}
+                    onChange={handleReciUrlChange}
+                  />
 
-                <TextField
-                  sx={fieldStyle}
-                  label="Image URL"
-                  size="small"
-                  multiline
-                  variant="outlined"
-                  value={recipe.image}
-                  onChange={handleReciUrlChange}
-                />
+                  <TextField
+                    sx={fieldStyle}
+                    label="Description"
+                    size="small"
+                    multiline
+                    rows={4}
+                    variant="outlined"
+                    value={recipe.description}
+                    onChange={handleReciDescChange}
+                  />
+                </div>
 
                 <div className="section">
                   <h3>Ingredients</h3>

@@ -1,5 +1,5 @@
 .form__section {
-  padding-left: 12rem;
+  padding-left: 5rem;
 }
 
 .form__wrapper {
@@ -20,12 +20,6 @@
   transition: background-color 0.3s ease-in-out;
   padding: 2rem;
   border-radius: 35px 0 0 35px;
-}
-
-@media screen and (max-width: 1100px) {
-  .form__left {
-    display: none;
-  }
 }
 
 @keyframes gradientMove {
@@ -67,11 +61,12 @@
 .form__header p {
   font-size: 1.2rem;
   color: #666;
+  margin-bottom: -1rem;
 }
 
 .form__fields {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 0.1rem 1rem;
 }
 
@@ -106,6 +101,11 @@
 
 .list {
   margin-top: 1rem;
+}
+
+.fieldtrip {
+  display: flex;
+  flex-direction: column;
 }
 
 .list li {
@@ -174,15 +174,36 @@
   }
 }
 
-@media (max-width: 1100px) {
+/* @media (max-width: 1100px) {
   .form__right {
     width: 37rem;
   }
-}
+} */
 
 @media (max-width: 360px) {
   .form__section {
-    padding: 0;
+    padding-left: 3rem;
+  }
+
+  .form-right {
+    width: 15rem;
+  }
+
+  .form__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 21rem;
+    height: 100vh;
+  }
+
+  .fieldtrip {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form__fields {
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -197,7 +218,7 @@
 
   .form__right {
     border-radius: 2rem;
-    padding: 2rem;
+    padding: 20px;
   }
 }
 
@@ -208,7 +229,7 @@
 }
 
 @media screen and (max-width: 1100px) {
-  .form__wrapper {
-    background-color: #c60808;
+  .form__left {
+    display: none;
   }
 } /* Stopped here */
