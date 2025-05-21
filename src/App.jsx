@@ -39,6 +39,7 @@ const App = () => {
 
   const toggleFavorite = (food) => {
     const favor = favorites.find((fav) => fav.id === food.id);
+
     if (favor) {
       setFavorites(favorites.filter((fav) => fav.id !== food.id));
     } else {
@@ -643,7 +644,7 @@ const App = () => {
               path="/fav/recipe/:id"
               element={
                 <RecipePage
-                  foods={favorites}
+                  foods={foods}
                   toggleFavorite={toggleFavorite}
                   favorites={favorites}
                 />
