@@ -626,7 +626,16 @@ const App = () => {
       <section>
         <Routes>
           <Route element={<MainLayout navLinks={navLinks} />}>
-            <Route index element={<Menu foods={foods} />} />
+            <Route
+              index
+              element={
+                <Menu
+                  foods={foods}
+                  favorites={favorites}
+                  toggleFavorite={toggleFavorite}
+                />
+              }
+            />
             <Route
               path="/menu"
               element={
