@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const Cards = ({ foods, toggleFavorite }) => {
+const Cards = ({ foods, favorites, toggleFavorite }) => {
   const [filter, setFilter] = useState("all");
 
   // const togL = () => {
@@ -95,7 +95,11 @@ const Cards = ({ foods, toggleFavorite }) => {
                   // onClick={() => togL()}
                   onClick={() => toggleFavorite(food)}
                 >
-                  <FaRegHeart size={24} />
+                  {favorites.some((item) => item.id === food.id) ? (
+                    <FaHeart size={24} color="red" />
+                  ) : (
+                    <FaRegHeart size={24} />
+                  )}
                 </span>
               </div>
             </div>
