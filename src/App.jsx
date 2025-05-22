@@ -24,6 +24,18 @@ const fieldStyle = {
 };
 
 const App = () => {
+  const [favorites, setFavorites] = useState([]);
+
+  const toggleFavorite = (food) => {
+    const favored = favorites.find((fav) => fav.id === food.id);
+
+    if (favored) {
+      setFavorites(favorites.filter((fav) => fav.id !== food.id));
+    } else {
+      setFavorites([...favorites, food]);
+    }
+  };
+
   const [navLinks] = useState([
     { label: "Menu", path: "/menu", icon: <MdRestaurantMenu size={24} /> },
     { label: "Edit", path: "/edit", icon: <FaRegEdit size={24} /> },
@@ -34,18 +46,6 @@ const App = () => {
     },
     { label: "Add", path: "/add", icon: <IoMdAddCircleOutline size={24} /> },
   ]);
-
-  const [favorites, setFavorites] = useState([]);
-
-  const toggleFavorite = (food) => {
-    const favor = favorites.find((fav) => fav.id === food.id);
-
-    if (favor) {
-      setFavorites(favorites.filter((fav) => fav.id !== food.id));
-    } else {
-      setFavorites([...favorites, food]);
-    }
-  };
 
   const [foods, setFoods] = useState([
     {
@@ -661,7 +661,16 @@ const App = () => {
                 />
               }
             />
-            <Route path="/:filter" element={<Cards foods={foods} />} />
+            <Route
+              path="/:filter"
+              element={
+                <Cards
+                  foods={foods}
+                  favorites={favorites}
+                  toggleFavorite={toggleFavorite}
+                />
+              }
+            />
             <Route
               path="/recipe/:id"
               element={

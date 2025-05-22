@@ -1,8 +1,13 @@
 import { useState } from "react";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const Cards = ({ foods }) => {
+const Cards = ({ foods, toggleFavorite }) => {
   const [filter, setFilter] = useState("all");
+
+  // const togL = () => {
+  //   console.log("Clicked");
+  // };
 
   const handleFilterChange = (category) => {
     setFilter(category);
@@ -81,9 +86,17 @@ const Cards = ({ foods }) => {
                     />
 
                     <h3 className="food__title">{food.title}</h3>
+
                     <p className="food__description">{food.description}</p>
                   </div>
                 </Link>
+                <span
+                  className="food__card-heart"
+                  // onClick={() => togL()}
+                  onClick={() => toggleFavorite(food)}
+                >
+                  <FaRegHeart size={24} />
+                </span>
               </div>
             </div>
           ))}

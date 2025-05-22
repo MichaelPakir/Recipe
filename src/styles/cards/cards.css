@@ -137,6 +137,22 @@
   color: #2befc5;
 }
 
+.food__card-heart {
+  margin-bottom: 12.2rem;
+  margin-left: 12.2rem;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 0.25rem;
+  background-color: #5976c5;
+  font-size: 18px;
+  font-weight: 700;
+}
+
 @media screen and (max-width: 1246px) {
   .heading {
     padding-left: 2.5rem;
