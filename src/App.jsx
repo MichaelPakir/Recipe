@@ -15,7 +15,7 @@ import { BsFillBookmarkHeartFill } from "react-icons/bs";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import Recipes from "./helpers/Recipes.jsx";
 import NavLinks from "./helpers/NavLinks.jsx";
-import { FoodContextProvider } from "./context/FoodProvider.jsx";
+import { FoodContextProvider } from "./context/FoodContextProvider.jsx";
 
 const fieldStyle = {
   ".MuiInputLabel-root": {
