@@ -92,7 +92,6 @@ const Cards = ({ foods, favorites, toggleFavorite }) => {
                 </Link>
                 <span
                   className="food__card-heart"
-                  // onClick={() => togL()}
                   onClick={() => toggleFavorite(food)}
                 >
                   {favorites.some((item) => item.id === food.id) ? (

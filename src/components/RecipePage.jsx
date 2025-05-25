@@ -4,16 +4,16 @@ import Heart from "react-animated-heart";
 import Sidebar from "./Sidebar";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
-const RecipePage = ({ foods, favorites, toggleFavorite }) => {
+const RecipePage = ({ foods }) => {
   const { id } = useParams();
   const food = foods.find((item) => item.id === parseInt(id));
-  const isFav = favorites.some((item) => item.id === food.id);
+  // const isFav = favorites.some((item) => item.id === food.id);
 
   return (
     <section className="recipe__container">
-      <div className="addToHeart" onClick={() => toggleFavorite(food)}>
+      {/* <div className="addToHeart" onClick={() => toggleFavorite(food)}>
         {isFav ? <FaHeart size={35} color="red" /> : <FaRegHeart size={35} />}
-      </div>
+      </div> */}
 
       <div className="heading">
         <h1 className="recipe__title">{food.title}</h1>
